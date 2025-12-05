@@ -17,7 +17,7 @@ public class Crow : GimmickBase
 
         _rb = this.GetComponent<Rigidbody>();
         var vec = target.position - this.transform.position;
-        _rb.linearVelocity = vec.normalized * _moveSpeed;
+        _rb.velocity = vec.normalized * _moveSpeed;
 
         Vector3 dir = target.position - transform.position;
         transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
@@ -41,9 +41,9 @@ public class Crow : GimmickBase
 
     //private void OnCollisionEnter(Collision collision)
     //{
-    //    // ï¿½Åï¿½ï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚Ì–@ï¿½ï¿½ï¿½xï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É”ï¿½ï¿½
+    //    // Å‰‚É“–‚½‚Á‚½‚à‚Ì‚Ì–@üƒxƒNƒgƒ‹•ûŒü‚É”ò‚Ô
     //    var vec = collision.contacts[0].normal.normalized;
-    //    // Rigidbodyï¿½Éuï¿½Ô“Iï¿½È—Í‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //    // Rigidbody‚ÉuŠÔ“I‚È—Í‚ğ‰Á‚¦‚é
     //    _rb.AddForce(vec * _moveSpeed, ForceMode.Impulse);
     //}
 }
