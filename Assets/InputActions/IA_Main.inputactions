@@ -1,0 +1,102 @@
+{
+    "name": "IA_Main",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "3b72c2ab-1950-4401-af44-82bf2d022839",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "115f9a64-a2bb-4385-ad14-c722a325d904",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RightTrigger",
+                    "type": "Value",
+                    "id": "29459867-7fa0-4e78-aab6-9cec1b642586",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "OpenUI",
+                    "type": "Button",
+                    "id": "bc724723-be92-4232-a10c-75133c0de453",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e2ea4155-74c5-4d20-94c6-4297f8d09f4b",
+                    "path": "<XRController>{LeftHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08ca7081-1b3f-4e85-a041-9107be488e57",
+                    "path": "<XRController>{RightHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa0ff10e-17a7-4532-b22a-7cfacae143ed",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "dd88b673-1b39-4d6a-b0df-ddd52f59b7c1",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "e46e86a0-af14-40e9-bca6-081c5c76496f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cdedc79c-149e-409d-ba5e-e2b4e99c48c0",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
