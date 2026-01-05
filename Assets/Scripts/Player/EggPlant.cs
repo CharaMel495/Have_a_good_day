@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +6,22 @@ public class EggPlant : MonoBehaviour
 {
     [SerializeField]
     private float _needWarmingTime;
+    [SerializeField]
+    private float _warmDamage;
 
     [SerializeField]
     private float _warmSpeed;
+    [SerializeField]
+    private float _warmSpeed_Crouch;
+
+    [SerializeField]
+    private SelfMade.Slider _slider;
 
     [SerializeField]
     private ScoreDataAsset _scoreAsset;
+
+    [SerializeField]
+    private SunRotater _sun;
 
     private float _warmingTime;
 
@@ -23,7 +33,9 @@ public class EggPlant : MonoBehaviour
 
     public void Initialize()
     {
-        _warmingTime = 0f;
+        _warmingTime = 0;
+        float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
+        _slider.UpdateValue(t);
         _changeA = 10.0f;
         _changeB = 20.0f;
 
@@ -35,19 +47,15 @@ public class EggPlant : MonoBehaviour
         _hasChangedB = false;
     }
 
-    public void Warm()
+    public void Warm(bool isStand)
     {
-        _warmingTime += Time.fixedDeltaTime * _warmSpeed;
+        _warmingTime += Time.fixedDeltaTime * (isStand ? _warmSpeed : _warmSpeed_Crouch);
 
-        Debug.Log(_warmingTime);
+        float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
+        _slider.UpdateValue(t);
+        _sun.RotateSun(t);
 
-        //if (_warmingTime < _needWarmingTime)
-        //    Debug.Log("‚ ‚½‚½‚ß‚¿‚ã‚¤");
-        //else
-        //    Debug.Log("‚ ‚½‚½‚ß‚«‚Á‚½‚æ");
-
-
-        // ™X‚É‰¹‚ð‘«‚·ƒeƒXƒgƒR[ƒh
+        // å¾ã€…ã«éŸ³ã‚’è¶³ã™ãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰
         if (_warmingTime > _changeA && !_hasChangedA)
         {
             CRISoundManager.Instance.SetCurrentBGMAISAC("AisacControl_02", 1.0f);
@@ -60,12 +68,25 @@ public class EggPlant : MonoBehaviour
             _hasChangedB = true;
         }
 
-        // ‚±‚±‚ÉƒQ[ƒ€ƒNƒŠƒA‚ð‘‚­
+        // ã“ã“ã«ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ã‚’æ›¸ã
 
         if (_warmingTime > _needWarmingTime)
         {
             _scoreAsset.WasSurvived = true;
             GameManager.ToGameOverScene();
         }
+    }
+
+    public void Damage()
+    {
+        _warmingTime -= _warmDamage;
+
+        float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
+        _slider.UpdateValue(t);
+
+        CRISoundManager.Instance.PlaySE(SFX.EggBreak);
+
+        if (_warmingTime < 0)
+            GameManager.ToGameOverScene();
     }
 }

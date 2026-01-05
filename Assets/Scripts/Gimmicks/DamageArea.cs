@@ -1,10 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class DamageArea : MonoBehaviour
 {
+    [SerializeField]
+    private EggPlant _eggPlant;
+
     [SerializeField]
     private int _maxLife = 10;
     private int _currentLife;
@@ -55,14 +58,10 @@ public class DamageArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<FireBall>(out var fireball))
+        if (other.gameObject.TryGetComponent<GimmickBase>(out var gimmick))
         {
-            --_currentLife;
-            float t = Mathf.InverseLerp(_maxLife, 0, _currentLife);
-            _material.color = Color.Lerp(_startColor, _endColor, t);
-
-            if (_currentLife < 0)
-                GameManager.ToGameOverScene();
+            _eggPlant.Damage();
+            Destroy(gimmick.gameObject);
         }
     }
 

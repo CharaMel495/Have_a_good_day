@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum Gimmicks
 {
-    ƒwƒr,
-    ƒlƒR,
-    ƒJƒ‰ƒX,
-    ‰Î‹…
+    ãƒ˜ãƒ“,
+    ãƒã‚³,
+    ã‚«ãƒ©ã‚¹,
+    ç«çƒ
 }
 
 public class GimmickSpawner : MonoBehaviour
@@ -33,9 +33,7 @@ public class GimmickSpawner : MonoBehaviour
         _timer = new();
         _timer.Initialize();
 
-        SpawnBallFromDome();
-
-        _timer.CreateTask(SpawnBallFromDome, _spawnInterval);
+        _timer.CreateTask(SpawnGimmick, _spawnInterval);
     }
 
     private void FixedUpdate()
@@ -43,16 +41,28 @@ public class GimmickSpawner : MonoBehaviour
         _timer.Update();
     }
 
+    public void SpawnGimmick()
+    {
+        // ã‚®ãƒŸãƒƒã‚¯ã‚’ç”Ÿæˆ
+        GimmickBase gimmick = Instantiate(_gmmickPrefabs[(int)_gimmick], this.transform.position, Quaternion.identity);
+
+        gimmick.Initialize(_player.transform);
+
+        EventDispatcher.Instance.Dispatch("SpawnEnemy", gimmick);
+
+        _timer.CreateTask(SpawnGimmick, _spawnInterval);
+    }
+
     public void SpawnBallFromDome()
     {
-        // ƒh[ƒ€•ûŒü‚Ìƒ‰ƒ“ƒ_ƒ€ƒxƒNƒgƒ‹
+        // ãƒ‰ãƒ¼ãƒ æ–¹å‘ã®ãƒ©ãƒ³ãƒ€ãƒ ãƒ™ã‚¯ãƒˆãƒ«
         Vector3 dir = Random.onUnitSphere;
         if (dir.y < 0) dir.y *= -1f;
 
-        // ƒvƒŒƒCƒ„[‚ğ’†S‚Éƒh[ƒ€ã‚ÉƒXƒ|[ƒ“ˆÊ’u‚ğİ’è
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ä¸­å¿ƒã«ãƒ‰ãƒ¼ãƒ ä¸Šã«ã‚¹ãƒãƒ¼ãƒ³ä½ç½®ã‚’è¨­å®š
         Vector3 spawnPos = _player.position + dir * _spawnRadius;
 
-        // ƒMƒ~ƒbƒN‚ğ¶¬
+        // ã‚®ãƒŸãƒƒã‚¯ã‚’ç”Ÿæˆ
         GimmickBase gimmick = Instantiate(_gmmickPrefabs[(int)_gimmick], spawnPos, Quaternion.identity);
 
         gimmick.Initialize(_player.transform);
@@ -62,18 +72,18 @@ public class GimmickSpawner : MonoBehaviour
 
     public void SpawnBallInFrontDome()
     {
-        // ‚Ü‚¸‚ÍãŒü‚«”¼‹…‚Ìƒ‰ƒ“ƒ_ƒ€‚È•ûŒü‚ğ“¾‚é
+        // ã¾ãšã¯ä¸Šå‘ãåŠçƒã®ãƒ©ãƒ³ãƒ€ãƒ ãªæ–¹å‘ã‚’å¾—ã‚‹
         Vector3 randomDir = Random.onUnitSphere;
-        if (randomDir.z < 0) randomDir.z *= -1f; // Z³–ÊŒÀ’èi‘OŒü‚«j
+        if (randomDir.z < 0) randomDir.z *= -1f; // Zæ­£é¢é™å®šï¼ˆå‰å‘ãï¼‰
 
-        // ³–Ê•ûŒü‚Éƒh[ƒ€‚ğ‰ñ“]‚³‚¹‚éiƒvƒŒƒCƒ„[‚Ì forward ‚ğ’†S‚Éj
+        // æ­£é¢æ–¹å‘ã«ãƒ‰ãƒ¼ãƒ ã‚’å›è»¢ã•ã›ã‚‹ï¼ˆãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã® forward ã‚’ä¸­å¿ƒã«ï¼‰
         Quaternion lookRot = Quaternion.LookRotation(-_player.forward, Vector3.up);
         Vector3 domeDir = lookRot * randomDir;
 
-        // ƒXƒ|[ƒ“ˆÊ’u‚ğŒˆ’èiƒvƒŒƒCƒ„[’†S + w’è‹——£j
+        // ã‚¹ãƒãƒ¼ãƒ³ä½ç½®ã‚’æ±ºå®šï¼ˆãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸­å¿ƒ + æŒ‡å®šè·é›¢ï¼‰
         Vector3 spawnPos = _player.position + domeDir * _spawnRadius;
 
-        // ƒMƒ~ƒbƒN‚ğ¶¬
+        // ã‚®ãƒŸãƒƒã‚¯ã‚’ç”Ÿæˆ
         GimmickBase gimmick = Instantiate(_gmmickPrefabs[(int)_gimmick], spawnPos, Quaternion.identity);
 
         gimmick.Initialize(_player.transform);

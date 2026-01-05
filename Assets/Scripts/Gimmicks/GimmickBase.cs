@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,9 +14,9 @@ public abstract class GimmickBase : MonoBehaviour
     public virtual void Shed(Vector3 impactNormal)
     {
         IsSheded = true;
-        // Å‰‚É“–‚½‚Á‚½‚à‚Ì‚Ì–@üƒxƒNƒgƒ‹•ûŒü‚É”ò‚Ô
+        // æœ€åˆã«å½“ãŸã£ãŸã‚‚ã®ã®æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«æ–¹å‘ã«é£›ã¶
         var vec = -impactNormal;
-        // Rigidbody‚ÉuŠÔ“I‚È—Í‚ð‰Á‚¦‚é
+        // Rigidbodyã«çž¬é–“çš„ãªåŠ›ã‚’åŠ ãˆã‚‹
         _rb.AddForce(vec * 30, ForceMode.Impulse);
         _timer.CreateTask(() => Destroy(this.gameObject), 4.0f);
     }
