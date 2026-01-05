@@ -52,7 +52,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Armature|walk
-  m_Speed: 16
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2754264279963500104, guid: 4f8c673074d02184fbcbc244736179dd, type: 3}
+  m_Motion: {fileID: -4799524434163024911, guid: 015604e444750a644afbb0e8496c1d2d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

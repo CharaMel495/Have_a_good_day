@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ‰H‚ğ‹È‚°‚é‚×‚«‚©‚ğŠm”F‚·‚éƒNƒ‰ƒX
+/// ç¾½ã‚’æ›²ã’ã‚‹ã¹ãã‹ã‚’ç¢ºèªã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class WingCurveDetector : MonoBehaviour
 {
@@ -40,8 +40,8 @@ public class WingCurveDetector : MonoBehaviour
     //    float f = Vector3.Dot(forward, toController);
     //    float r = Vector3.Dot(right, toController);
 
-    //    // u‘O‘¤v‚©‚Âu¶‰E‚Ç‚¿‚ç‚©v¨ Î‚ß‘O‚Ì”»’è
-    //    // —áF‰E‘O‚ğ”»’è‚µ‚½‚¢‚È‚ç f>0 && r>0
+    //    // ã€Œå‰å´ã€ã‹ã¤ã€Œå·¦å³ã©ã¡ã‚‰ã‹ã€â†’ æ–œã‚å‰ã®åˆ¤å®š
+    //    // ä¾‹ï¼šå³å‰ã‚’åˆ¤å®šã—ãŸã„ãªã‚‰ f>0 && r>0
     //    return _isRightHand ?
     //        (f > 0f) && (Mathf.Abs(r) > 0f) :
     //        (f > 0f) && (Mathf.Abs(r) < 0f);
@@ -49,33 +49,33 @@ public class WingCurveDetector : MonoBehaviour
 
     bool IsControllerDiagonal(float minAngle = 0f, float maxAngle = 30f)
     {
-        // ƒRƒ“ƒgƒ[ƒ‰[‚Ì•ûŒüi…•½‚¾‚¯j
+        // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã®æ–¹å‘ï¼ˆæ°´å¹³ã ã‘ï¼‰
         Vector3 toController = this.transform.position - _vecRef.position;
         toController.y = 0f;
         toController.Normalize();
 
-        // ƒvƒŒƒCƒ„[³–Êi…•½‚¾‚¯j
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æ­£é¢ï¼ˆæ°´å¹³ã ã‘ï¼‰
         Vector3 forward = _vecRef.forward;
         forward.y = 0f;
         forward.Normalize();
 
         float angle = Vector3.Angle(forward, toController);
 
-        // Î‚ß‘O‚ÌŠp“x”ÍˆÍ‚É“ü‚Á‚Ä‚¢‚é‚©H
+        // æ–œã‚å‰ã®è§’åº¦ç¯„å›²ã«å…¥ã£ã¦ã„ã‚‹ã‹ï¼Ÿ
         bool inDiagonalRange = angle >= minAngle && angle <= maxAngle;
 
         _wingAnimator.SetFloat(_wingCurveValueHash, Mathf.InverseLerp(maxAngle, minAngle, angle));
 
         if (!inDiagonalRange) return false;
 
-        // ‰E”»’è or ¶”»’è
+        // å³åˆ¤å®š or å·¦åˆ¤å®š
         float side = Vector3.Dot(_vecRef.right, toController);
 
         if (_isRightHand)
-            // ‰EÎ‚ß‘O
+            // å³æ–œã‚å‰
             return side > 0f;
         else
-            // ¶Î‚ß‘O
+            // å·¦æ–œã‚å‰
             return side < 0f;
     }
 }

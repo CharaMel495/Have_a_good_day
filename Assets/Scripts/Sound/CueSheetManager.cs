@@ -20,6 +20,7 @@ public enum SFX
     CatWalk,
     CrowWing,
     SnakeWalk,
+    EggBreak
 }
 
 
