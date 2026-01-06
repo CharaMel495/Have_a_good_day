@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class WingFlapDetector
 {
-    private Transform _controller;       // •ĞèƒRƒ“ƒgƒ[ƒ‰[
-    private float _flapThreshold = 4.5f; // U‚è‘¬“x‚Ì‚µ‚«‚¢’l
+    private Transform _controller;       // ç‰‡æ‰‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
+    private float _flapThreshold = 4.5f; // æŒ¯ã‚Šé€Ÿåº¦ã®ã—ãã„å€¤
 
     private Vector3 _lastPos;
 

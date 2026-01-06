@@ -1,4 +1,4 @@
-using CriWare;
+ï»¿using CriWare;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +7,13 @@ using UnityEngine;
 public class PlayerWing : MonoBehaviour
 {
     private PlayerWind _wind;
-    // ƒRƒ“ƒgƒ[ƒ‰[‚ðU‚Á‚½‚©Šm”F‚·‚é
+    // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã‚’æŒ¯ã£ãŸã‹ç¢ºèªã™ã‚‹
     private WingFlapDetector _flapChecker;
-    // OnCollisionEnter‚ðŽg‚¤‚½‚ß
+    // OnCollisionEnterã‚’ä½¿ã†ãŸã‚
     private Rigidbody _rb;
+
+    [SerializeField]
+    private Transform _playerTransform;
 
     [SerializeField]
     private bool _isRightHand;
@@ -21,6 +24,12 @@ public class PlayerWing : MonoBehaviour
     private bool _isFlapable = true;
 
     private Timer _timer;
+
+    private enum FlapDirection
+    {
+        Vertical,
+        Horizontal
+    }
 
     private void Start()
     {
@@ -37,9 +46,16 @@ public class PlayerWing : MonoBehaviour
 
         if (_isFlapable && _flapChecker.CheckFlap(out Vector3 vel))
         {
-            _wind.ApplyWind(this.transform.position, _isRightHand ?
-                _wind.GetRightWindDir(vel) :
-                _wind.GetLeftWindDir(vel));
+            if (GetFlapDirection(vel, _playerTransform.forward) == FlapDirection.Vertical)
+            {
+                EventDispatcher.Instance.Dispatch("PlayerFlight");
+            }
+            else
+            {
+                _wind.ApplyWind(this.transform.position, _isRightHand ?
+                    _wind.GetRightWindDir(vel) :
+                    _wind.GetLeftWindDir(vel));
+            }
 
             _isFlapable = false;
 
@@ -56,4 +72,22 @@ public class PlayerWing : MonoBehaviour
             gimmick.Shed(collision.contacts[0].normal.normalized);
         }
     }
+
+    private FlapDirection GetFlapDirection(Vector3 vel, Vector3 playerForward)
+    {
+        // å¿µã®ãŸã‚æ­£è¦åŒ–
+        playerForward.y = 0f;
+        playerForward.Normalize();
+
+        Vector3 right = Vector3.Cross(Vector3.up, playerForward).normalized;
+
+        // å„æˆåˆ†ã‚’å–å¾—
+        float verticalPower = Mathf.Abs(Vector3.Dot(vel, Vector3.up));
+        float horizontalPower = Mathf.Abs(Vector3.Dot(vel, right));
+
+        return verticalPower > horizontalPower
+            ? FlapDirection.Vertical
+            : FlapDirection.Horizontal;
+    }
+
 }

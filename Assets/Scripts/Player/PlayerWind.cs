@@ -1,27 +1,27 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWind
 {
-    public float windRange = 4f;
+    public float windRange = 80f;
     public float windAngle = 45f;
     public float windPower = 20f;
 
-    public ParticleSystem windEffect; // ‰H‚Î‚½‚«‚Ìƒp[ƒeƒBƒNƒ‹
+    public ParticleSystem windEffect; // ç¾½ã°ãŸãã®ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«
 
     public Vector3 GetRightWindDir(Vector3 move)
     {
-        // ã‰º¬•ª‚ğíœ‚µ‚Ä…•½‚¾‚¯‚É
+        // ä¸Šä¸‹æˆåˆ†ã‚’å‰Šé™¤ã—ã¦æ°´å¹³ã ã‘ã«
         move.y = 0f;
 
-        // “®‚«‚ª¬‚³‚·‚¬‚é‚Æ‚«‚Í–³•—
+        // å‹•ããŒå°ã•ã™ãã‚‹ã¨ãã¯ç„¡é¢¨
         if (move.sqrMagnitude < 0.0001f)
             return Vector3.zero;
 
         move.Normalize();
 
-        // U‚è•ûŒü‚É‘Î‚µ g‰E‘¤h ‚Ì’¼Šp•ûŒü = Cross(up, move)
+        // æŒ¯ã‚Šæ–¹å‘ã«å¯¾ã— â€œå³å´â€ ã®ç›´è§’æ–¹å‘ = Cross(up, move)
         Vector3 windDir = Vector3.Cross(Vector3.up, move).normalized;
 
         return windDir;
@@ -29,16 +29,16 @@ public class PlayerWind
 
     public Vector3 GetLeftWindDir(Vector3 move)
     {
-        // ã‰º¬•ª‚ğíœ‚µ‚Ä…•½‚¾‚¯‚É
+        // ä¸Šä¸‹æˆåˆ†ã‚’å‰Šé™¤ã—ã¦æ°´å¹³ã ã‘ã«
         move.y = 0f;
 
-        // “®‚«‚ª¬‚³‚·‚¬‚é‚Æ‚«‚Í–³•—
+        // å‹•ããŒå°ã•ã™ãã‚‹ã¨ãã¯ç„¡é¢¨
         if (move.sqrMagnitude < 0.0001f)
             return Vector3.zero;
 
         move.Normalize();
 
-        // U‚è•ûŒü‚É‘Î‚µ g¶‘¤h ‚Ì’¼Šp•ûŒü = Cross(move, up)
+        // æŒ¯ã‚Šæ–¹å‘ã«å¯¾ã— â€œå·¦å´â€ ã®ç›´è§’æ–¹å‘ = Cross(move, up)
         Vector3 windDir = Vector3.Cross(move, Vector3.up).normalized;
 
         return windDir;
@@ -53,10 +53,12 @@ public class PlayerWind
 
         foreach (var hit in hits)
         {
-            Rigidbody rb = hit.attachedRigidbody;
-            if (!rb) continue;
+            hit.gameObject.TryGetComponent<GimmickBase>(out var gimmick);
 
-            rb.AddForce(windDir * windPower, ForceMode.Impulse);
+            if (gimmick is not Mist mist)
+                continue;
+
+            mist.Winded();
         }
 
         CRISoundManager.Instance.PlaySE(SFX.CrowWing);

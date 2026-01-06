@@ -53,7 +53,7 @@ public class EggPlant : MonoBehaviour
 
         float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
         _slider.UpdateValue(t);
-        _sun.RotateSun(t);
+        //_sun.RotateSun(t);
 
         // 徐々に音を足すテストコード
         if (_warmingTime > _changeA && !_hasChangedA)

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Œ»İ’N‚É“ü—Íî•ñ‚ğ“n‚·‚©
+/// ç¾åœ¨èª°ã«å…¥åŠ›æƒ…å ±ã‚’æ¸¡ã™ã‹
 /// </summary>
 public enum InputHandler
 {
@@ -15,7 +15,7 @@ public enum InputHandler
 }
 
 /// <summary>
-/// “ü—Í‚ÉŠÖŒW‚·‚é‹Lq‚Í‚·‚×‚Ä‚±‚±‚É
+/// å…¥åŠ›ã«é–¢ä¿‚ã™ã‚‹è¨˜è¿°ã¯ã™ã¹ã¦ã“ã“ã«
 /// </summary>
 public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
 {
@@ -38,6 +38,7 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
     private InputAction _rightGrip;
     private InputAction _leftGrip;
     private InputAction _openUIAction;
+    private InputAction _debugJumpAction;
 
     [SerializeField] 
     private float _stickDeadzoneSqrt = 0.1f;
@@ -72,6 +73,8 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
         _leftTrigger = Instance._playerMap.FindAction("LeftTrigger");
         _rightGrip = Instance._playerMap.FindAction("RightGrip");
         _leftGrip = Instance._playerMap.FindAction("LeftGrip");
+
+        _debugJumpAction = Instance._playerMap.FindAction("DebugJump");
 
         _playerMap.Enable();
         _uiMap.Disable();

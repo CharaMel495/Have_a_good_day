@@ -6,6 +6,9 @@ using UnityEngine;
 public class DamageArea : MonoBehaviour
 {
     [SerializeField]
+    private Player _player;
+
+    [SerializeField]
     private EggPlant _eggPlant;
 
     [SerializeField]
@@ -60,6 +63,14 @@ public class DamageArea : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<GimmickBase>(out var gimmick))
         {
+            // 雷ギミックは飛んでいたら回避できる
+            if (gimmick is Thunder && _player.IsFlight)
+                return;
+
+            // 雨ギミックはしゃがんでいれば回避できる
+            if (gimmick is Rain && _player.CrouchChecker.IsCrouching)
+                return;
+
             _eggPlant.Damage();
             Destroy(gimmick.gameObject);
         }

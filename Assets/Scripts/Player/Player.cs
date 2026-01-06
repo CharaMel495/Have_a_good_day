@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
     private CrouchDetector _crouchChecker;
+    public CrouchDetector CrouchChecker => _crouchChecker;
 
     [SerializeField]
     private LaderCyrinder _laderPrefab;
@@ -31,17 +33,40 @@ public class Player : MonoBehaviour
     //private int _crouchFlagHash = Animator.StringToHash("IsCrouch");
     private int _crouchBlendHash = Animator.StringToHash("CrouchBlend");
 
+    [SerializeField]
+    private float _flightTime;
+    [SerializeField]
+    private float _flightHeight;
+
+    public bool IsFlight { get; set; }
+
+    private Timer _timer;
+
     public void Initialize()
     {
         _eggPlant.Initialize();
 
         _crouchChecker = this.GetComponent<CrouchDetector>();
+        _timer = new();
+
+        IsFlight = false;
 
         EventDispatcher.Instance.Bind(this);
+        EventDispatcher.Instance.Subscribe("PlayerFlight",(object data) => Flight());
+    }
+
+    private void Update()
+    {
+        if (!InputSystemManager.CheckActionPressed("DebugJump", InputHandler.Player, true))
+            return;
+
+        Flight();
     }
 
     private void FixedUpdate()
     {
+        _timer.Update();
+
         _eggPlant.Warm(_crouchChecker.IsCrouching);
 
         _bodyAnimator.SetFloat(_crouchBlendHash, Mathf.InverseLerp(_crouchChecker.crouchThreshold, _crouchChecker.standingHeight, _crouchChecker.HeadHeight));
@@ -52,7 +77,7 @@ public class Player : MonoBehaviour
         camForward.Normalize();
 
         // モデルを水平 forward に向ける（Up は常に地面に垂直）
-        _bodyTransform.rotation = Quaternion.LookRotation(camForward, Vector3.up);
+        //_bodyTransform.rotation = Quaternion.LookRotation(camForward, Vector3.up);
 
         SetWingSize();
     }
@@ -75,5 +100,16 @@ public class Player : MonoBehaviour
         var scale = Vector3.Lerp(_smallestScale, _biggestScale, t);
         _wingTransformR.localScale = scale;
         _wingTransformL.localScale = scale;
+    }
+
+    public void Flight()
+    {
+        if (IsFlight)
+            return;
+
+        IsFlight = true;
+
+        this.transform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightHeight);
+        _timer.CreateTask(() => IsFlight = false, _flightTime);
     }
 }
