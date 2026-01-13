@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         IsFlight = false;
 
         EventDispatcher.Instance.Bind(this);
-        EventDispatcher.Instance.Subscribe("PlayerFlight",(object data) => Flight());
+        EventDispatcher.Instance.Subscribe("PlayerFlight", (object data) => Flight());
     }
 
     private void Update()
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 
         IsFlight = true;
 
-        this.transform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightHeight);
+        _cameraTransform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightHeight);
         _timer.CreateTask(() => IsFlight = false, _flightTime);
     }
 }

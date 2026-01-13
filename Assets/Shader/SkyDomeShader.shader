@@ -1,73 +1,170 @@
-Shader "Custom/SkyDomeShader"
+Shader "Custom/SkyDome"
 {
     Properties
     {
-        _MainTex ("Sky Texture", 2D) = "white" {}
-        _CrackTex ("Crack Mask", 2D) = "black" {}
-        _CrackProgress ("Crack Progress", Range(0,1)) = 0
-        _CrackColor ("Crack Color", Color) = (1,1,1,1)
+        // ===== Time =====
+        _SkyTime ("Sky Time (0=Dawn)", Range(0,1)) = 0
+
+        // ===== Sky Colors =====
+        _SkyColorDawn ("Sky Color Dawn", Color) = (0.7,0.5,1.0,1)
+        _SkyColorDay ("Sky Color Day", Color) = (0.5,0.8,1.0,1)
+        _SkyColorDusk ("Sky Color Dusk", Color) = (1.0,0.6,0.3,1)
+        _SkyColorNight ("Sky Color Night", Color) = (0.1,0.2,0.4,1)
+
+        _SkyGradient ("Sky Vertical Gradient", Range(0,1)) = 0.4
+
+        // ===== Cloud =====
+        _CloudTex ("Cloud Texture (Grayscale)", 2D) = "white" {}
+        _CloudIntensity ("Cloud Intensity", Range(0,1)) = 0.6
+        _CloudScroll ("Cloud Scroll (XY)", Vector) = (0.002, 0.0, 0, 0)
+
+        // ===== Glass / Crack =====
+        _GlassTex ("Glass Animation Texture", 2D) = "white" {}
+        _GlassCols ("Glass Columns", Int) = 4
+        _GlassRows ("Glass Rows", Int) = 4
+        _GlassProgress ("Glass Progress", Range(0,1)) = 0
+        _GlassIntensity ("Glass Intensity", Range(0,1)) = 1
     }
 
     SubShader
     {
-        Tags { "Queue"="Background" "RenderType"="Opaque" }
-        LOD 100
+        Tags
+        {
+            "RenderPipeline"="UniversalPipeline"
+            "Queue"="Background"
+            "RenderType"="Opaque"
+        }
 
-        // ì‡ë§Çï`âÊÇ∑ÇÈ
         Cull Front
         ZWrite Off
         ZTest LEqual
 
         Pass
         {
-            CGPROGRAM
+            Name "Sky"
+            Tags { "LightMode"="UniversalForward" }
+
+            HLSLPROGRAM
+            #pragma target 3.0
             #pragma vertex vert
             #pragma fragment frag
-            #include "UnityCG.cginc"
 
-            sampler2D _MainTex;
-            sampler2D _CrackTex;
-            float4 _MainTex_ST;
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            float _CrackProgress;
-            float4 _CrackColor;
-
-            struct appdata
+            struct Attributes
             {
-                float4 vertex : POSITION;
+                float4 positionOS : POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct v2f
+            struct Varyings
             {
+                float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
-                float4 vertex : SV_POSITION;
             };
 
-            v2f vert (appdata v)
+            TEXTURE2D(_CloudTex);
+            SAMPLER(sampler_CloudTex);
+
+            TEXTURE2D(_GlassTex);
+            SAMPLER(sampler_GlassTex);
+
+            float _SkyTime;
+
+            float4 _SkyColorDawn;
+            float4 _SkyColorDay;
+            float4 _SkyColorDusk;
+            float4 _SkyColorNight;
+            float _SkyGradient;
+
+            float _CloudIntensity;
+            float4 _CloudScroll;
+
+            int _GlassCols;
+            int _GlassRows;
+            float _GlassProgress;
+            float _GlassIntensity;
+
+            Varyings vert (Attributes v)
             {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                Varyings o;
+                o.positionHCS = TransformObjectToHClip(v.positionOS.xyz);
+                o.uv = v.uv;
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            // ===== 4êFèzä¬ =====
+            float3 GetSkyColor(float t)
             {
-                fixed4 sky = tex2D(_MainTex, i.uv);
+                float phase = t * 4.0;
+                float localT = frac(phase);
 
-                float crackMask = tex2D(_CrackTex, i.uv).r;
+                float3 c0, c1;
 
-                // êiçsìxÇ…âûÇ∂ÇƒÉqÉrÇèoÇ∑
-                float crackVisible = step(1.0 - _CrackProgress, crackMask);
+                if (phase < 1.0)
+                {
+                    c0 = _SkyColorDawn.rgb;
+                    c1 = _SkyColorDay.rgb;
+                }
+                else if (phase < 2.0)
+                {
+                    c0 = _SkyColorDay.rgb;
+                    c1 = _SkyColorDusk.rgb;
+                }
+                else if (phase < 3.0)
+                {
+                    c0 = _SkyColorDusk.rgb;
+                    c1 = _SkyColorNight.rgb;
+                }
+                else
+                {
+                    c0 = _SkyColorNight.rgb;
+                    c1 = _SkyColorDawn.rgb;
+                }
 
-                fixed4 crack = _CrackColor * crackVisible;
-
-                return sky + crack;
-
-                // return tex2D(_MainTex, i.uv);
+                return lerp(c0, c1, smoothstep(0, 1, localT));
             }
-            ENDCG
+
+            half4 frag (Varyings i) : SV_Target
+            {
+                // ===== Sky Base =====
+                float3 skyColor = GetSkyColor(frac(_SkyTime));
+
+                // vertical gradient
+                float grad = lerp(1.0 - _SkyGradient, 1.0, saturate(i.uv.y));
+                skyColor *= grad;
+
+                // ===== Cloud Layer =====
+                float2 cloudUV = i.uv + _CloudScroll.xy * _Time.y;
+                float cloudMask = SAMPLE_TEXTURE2D(_CloudTex, sampler_CloudTex, cloudUV).r;
+
+                float3 cloudColor =
+                    skyColor * lerp(1.0, cloudMask, _CloudIntensity);
+
+                float3 skyBase = lerp(skyColor, cloudColor, cloudMask);
+
+                // ===== Glass Animation =====
+                int totalFrames = _GlassCols * _GlassRows;
+                float frame = floor(_GlassProgress * (totalFrames - 1));
+
+                float col = fmod(frame, _GlassCols);
+                float row = floor(frame / _GlassCols);
+
+                float2 frameSize = float2(1.0 / _GlassCols, 1.0 / _GlassRows);
+
+                float2 glassUV =
+                    i.uv * frameSize +
+                    float2(col, (_GlassRows - 1 - row)) * frameSize;
+
+                float4 glass =
+                    SAMPLE_TEXTURE2D(_GlassTex, sampler_GlassTex, glassUV);
+
+                float3 result =
+                    skyBase + glass.rgb * glass.a * _GlassIntensity;
+
+                return float4(result, 1.0);
+            }
+            ENDHLSL
         }
     }
 }

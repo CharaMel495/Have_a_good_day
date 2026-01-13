@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (9)
@@ -419,13 +423,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83608704}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.12278779, y: -0.6963643, z: 0.12278779, w: 0.6963643}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 20}
 --- !u!1001 &86833781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c5f78be43833241a52b8b6d8a0e762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
+  _playerTransform: {fileID: 1254718737}
   _isRightHand: 0
   _falpInterval: 0.5
 --- !u!54 &91253023
@@ -723,6 +727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenWing
       objectReference: {fileID: 0}
+    - target: {fileID: 2685040966164070697, guid: cfe8e363d31e84c4e974c6410ea62614, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97438f05d92a8d940abf018a1d0d1da5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -915,7 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c5f78be43833241a52b8b6d8a0e762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
+  _playerTransform: {fileID: 1254718737}
   _isRightHand: 1
   _falpInterval: 0.5
 --- !u!54 &198463462
@@ -1030,6 +1038,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (8)
@@ -1458,6 +1470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenWing
       objectReference: {fileID: 0}
+    - target: {fileID: 2685040966164070697, guid: cfe8e363d31e84c4e974c6410ea62614, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97438f05d92a8d940abf018a1d0d1da5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1817,6 +1833,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (6)
@@ -2412,6 +2432,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8547562741469487195, guid: 1cc366ffed1f2924690139d67a88b254, type: 3}
   m_PrefabInstance: {fileID: 426347836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &436235566 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 441087506}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &441087506
 PrefabInstance:
@@ -3509,6 +3534,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (5)
@@ -6050,7 +6079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _laderPrefab: {fileID: 8928521397667180927, guid: bf7bf2a50bb1eb44baa9caff9fafd01b, type: 3}
-  _cameraTransform: {fileID: 14691704}
+  _cameraTransform: {fileID: 436235566}
   _eggPlant: {fileID: 2105298498}
   _bodyAnimator: {fileID: 259253975}
   _bodyTransform: {fileID: 259253976}
@@ -6354,6 +6383,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (11)
@@ -7174,6 +7207,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (4)
@@ -7794,6 +7831,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (1)
@@ -8657,7 +8698,15 @@ PrefabInstance:
     - target: {fileID: 1630794972795428178, guid: 2bc3a743c943ef8499e79c96e3ebddad, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -9130586711530211351, guid: 2bc3a743c943ef8499e79c96e3ebddad, type: 3}
+      objectReference: {fileID: 2100000, guid: c00c87f46d99e6a4992af2735266ae79, type: 2}
+    - target: {fileID: 1630794972795428178, guid: 2bc3a743c943ef8499e79c96e3ebddad, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: fa0fd497d78ee8e4287cfcf2e30b0a11, type: 2}
+    - target: {fileID: 1630794972795428178, guid: 2bc3a743c943ef8499e79c96e3ebddad, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97438f05d92a8d940abf018a1d0d1da5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9182,6 +9231,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (10)
@@ -9408,6 +9461,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (3)
@@ -9481,6 +9538,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (7)
@@ -9628,6 +9689,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg
@@ -9701,6 +9766,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14faa5141a5052a44a8c07597ea2b468, type: 2}
     - target: {fileID: 919132149155446097, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
       propertyPath: m_Name
       value: Egg (2)
