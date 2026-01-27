@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 /// <summary>
 /// 現在誰に入力情報を渡すか
@@ -39,6 +40,7 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
     private InputAction _leftGrip;
     private InputAction _openUIAction;
     private InputAction _debugJumpAction;
+    private InputAction _debugHeadSwing;
 
     [SerializeField] 
     private float _stickDeadzoneSqrt = 0.1f;
@@ -75,6 +77,7 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
         _leftGrip = Instance._playerMap.FindAction("LeftGrip");
 
         _debugJumpAction = Instance._playerMap.FindAction("DebugJump");
+        _debugHeadSwing = Instance._playerMap.FindAction("DebugHeadSwing");
 
         _playerMap.Enable();
         _uiMap.Disable();
@@ -218,5 +221,22 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
     public void ReturnHandle()
     {
         SwapNextHandle(_remainingHandler);
+    }
+
+    public float ReadActionValue(string key, InputHandler handle)
+    {
+        if (CurrentHandler != handle || (handle == InputHandler.Player && GameManager.IsFade))
+            return 0.0f;
+
+        if (Instance._playerMap == null)
+        {
+            Debug.LogWarning("_playerMap is Null");
+            return 0.0f;
+        }
+
+        var action = Instance._playerMap.FindAction(key);
+        if (action == null) return 0.0f;
+
+        return action.ReadValue<float>();
     }
 }

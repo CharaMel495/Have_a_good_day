@@ -48,6 +48,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _CloudTex:
+        m_Texture: {fileID: 2800000, guid: 11432b344198bb64690923d2379f9eec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _CrackTex:
         m_Texture: {fileID: 2800000, guid: af44e521bb418a04a9225ce58a8f00a7, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -74,6 +78,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlassTex:
+        m_Texture: {fileID: 2800000, guid: 373a7fcf9fe74394c96d5638d613558a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
@@ -133,6 +141,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _CloudIntensity: 0
     - _CrackProgress: 0
     - _Cull: 2
     - _Cutoff: 0.5
@@ -142,6 +151,10 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _Exposure: 1
+    - _GlassCols: 10
+    - _GlassIntensity: 1
+    - _GlassProgress: 0
+    - _GlassRows: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -151,6 +164,8 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Rotation: 0
+    - _SkyGradient: 0
+    - _SkyTime: 0.783
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -161,9 +176,14 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CloudScroll: {r: 0.002, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CrackColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SkyColorDawn: {r: 0.19397032, g: 0.09203984, b: 0.3509434, a: 1}
+    - _SkyColorDay: {r: 0.5, g: 0.8, b: 1, a: 1}
+    - _SkyColorDusk: {r: 1, g: 0.6, b: 0.29999998, a: 1}
+    - _SkyColorNight: {r: 0.02891419, g: 0.058894407, b: 0.11698109, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

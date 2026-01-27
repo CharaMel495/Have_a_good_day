@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         IsFlight = false;
 
         EventDispatcher.Instance.Bind(this);
-        EventDispatcher.Instance.Subscribe("PlayerFlight",(object data) => Flight());
+        EventDispatcher.Instance.Subscribe("PlayerFlight", (object data) => Flight());
     }
 
     private void Update()
@@ -80,6 +80,15 @@ public class Player : MonoBehaviour
         //_bodyTransform.rotation = Quaternion.LookRotation(camForward, Vector3.up);
 
         SetWingSize();
+
+        if (!InputSystemManager.CheckActionPressed("DebugHeadSwing", InputHandler.Player, true))
+            return;
+
+        var val = InputSystemManager.Instance.ReadActionValue("DebugHeadSwing", InputHandler.Player);
+
+        var euler = this.transform.eulerAngles;
+        euler.y += val * Time.fixedDeltaTime * 300.0f;
+        this.transform.eulerAngles = euler;
     }
 
     //[CallableEvent("SpawnEnemy")]
@@ -109,7 +118,7 @@ public class Player : MonoBehaviour
 
         IsFlight = true;
 
-        this.transform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightHeight);
+        _cameraTransform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightHeight);
         _timer.CreateTask(() => IsFlight = false, _flightTime);
     }
 }
