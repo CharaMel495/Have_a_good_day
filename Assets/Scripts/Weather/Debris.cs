@@ -59,7 +59,7 @@ public class Debris : MonoBehaviour
         prev_view_matrix_ = Camera.main.worldToCameraMatrix;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         var target_position = Camera.main.transform.TransformPoint(Vector3.forward * range_);
         var matrix = prev_view_matrix_ * Camera.main.cameraToWorldMatrix; // prev-view * inverted-cur-view
@@ -75,4 +75,7 @@ public class Debris : MonoBehaviour
         move_ = Mathf.Repeat(move_, range_ * 2f);
         prev_view_matrix_ = Camera.main.worldToCameraMatrix;
     }
+
+    public void ChangeDebriColor(Color col)
+        => GetComponent<Renderer>().material.color = col;
 }

@@ -18,6 +18,10 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
         PlayerManager.Instance.Initialize();
 
         CRISoundManager.Instance.PlayBGM(BGM.Test2);
+
+        WeatherManager.Instance.Initialize();
+
+        EventDispatcher.Instance.Dispatch("OpenWeather", WeatherManager.eWeater.雨);
     }
 
     public void SwitchDebugCanvusActive()
