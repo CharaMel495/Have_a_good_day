@@ -139,7 +139,7 @@ Shader "Custom/SkyDome"
                 float cloudMask = SAMPLE_TEXTURE2D(_CloudTex, sampler_CloudTex, cloudUV).r;
 
                 float3 cloudColor =
-                    skyColor * lerp(1.0, cloudMask, _CloudIntensity);
+                    lerp(1.0, cloudMask, _CloudIntensity);
 
                 float3 skyBase = lerp(skyColor, cloudColor, cloudMask);
 

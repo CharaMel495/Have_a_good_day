@@ -80,6 +80,15 @@ public class Player : MonoBehaviour
         //_bodyTransform.rotation = Quaternion.LookRotation(camForward, Vector3.up);
 
         SetWingSize();
+
+        if (!InputSystemManager.CheckActionPressed("DebugHeadSwing", InputHandler.Player, true))
+            return;
+
+        var val = InputSystemManager.Instance.ReadActionValue("DebugHeadSwing", InputHandler.Player);
+
+        var euler = this.transform.eulerAngles;
+        euler.y += val * Time.fixedDeltaTime * 300.0f;
+        this.transform.eulerAngles = euler;
     }
 
     //[CallableEvent("SpawnEnemy")]
