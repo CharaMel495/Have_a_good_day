@@ -20,7 +20,9 @@ public enum SFX
     CatWalk,
     CrowWing,
     SnakeWalk,
-    EggBreak
+    EggBreak,
+    Thunder,
+    rain
 }
 
 

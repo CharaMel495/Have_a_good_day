@@ -11,6 +11,9 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
     private ScoreDataAsset _scoreAsset;
 
     [SerializeField]
+    private Material _skyMat;
+
+    [SerializeField]
     [Header("デバッグ用オブジェクト")]
     private GameObject _debugCanvus;
 
@@ -47,6 +50,9 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
     private void FixedUpdate()
     {
         _remainTime -= Time.fixedDeltaTime;
+
+        var t = Mathf.InverseLerp(_stageTime, 0.0f, _remainTime);
+        _skyMat.SetFloat("_SkyTime", t);
 
         if (!_isRained && _remainTime < _rainTime)
         {

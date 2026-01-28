@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f281b188a25e740468d62a1921e47be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deadEffect: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  _effectSize: {x: 5, y: 5, z: 5}
   _moveSpeed: 4
   _gWalker: {fileID: 2256686900975392371}
   _atomSource: {fileID: 7129613613625855062}

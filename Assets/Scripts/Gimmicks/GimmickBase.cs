@@ -5,6 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class GimmickBase : MonoBehaviour
 {
+    [SerializeField]
+    protected ParticleSystem _deadEffect;
+    [SerializeField]
+    protected Vector3 _effectSize;
     public bool IsSheded { get; set; } = false;
     protected Rigidbody _rb;
     protected Timer _timer;
@@ -19,5 +23,11 @@ public abstract class GimmickBase : MonoBehaviour
         // Rigidbodyに瞬間的な力を加える
         _rb.AddForce(vec * 30, ForceMode.Impulse);
         _timer.CreateTask(() => Destroy(this.gameObject), 4.0f);
+
+        if (_deadEffect != null)
+        {
+            var effect = Instantiate(_deadEffect, this.transform.position, this.transform.rotation);
+            effect.transform.localScale = _effectSize;
+        }
     }
 }

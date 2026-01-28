@@ -18,9 +18,6 @@ public class EggPlant : MonoBehaviour
     private SelfMade.Slider _slider;
 
     [SerializeField]
-    private ScoreDataAsset _scoreAsset;
-
-    [SerializeField]
     private SunRotater _sun;
 
     //private float _warmingTime;
