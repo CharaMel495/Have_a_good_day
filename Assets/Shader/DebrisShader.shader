@@ -1,6 +1,12 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Custom/Debris" {
+
+    Properties
+    {
+        _Color ("Color", Color) = (1,1,1,1)
+    }
+
 	SubShader {
    		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
 		ZWrite Off
@@ -34,6 +40,8 @@ Shader "Custom/Debris" {
 			float    _RangeR;
 			float    _MoveTotal;
 			float    _Move;
+            fixed4   _Color;
+
    
             v2f vert(appdata_custom v)
             {
@@ -57,7 +65,7 @@ Shader "Custom/Debris" {
             	o.pos = tv0 + tv1;
             	float depth = o.pos.z * 0.02;
             	float normalized_depth = (1 - depth);
-            	o.color = v.color;
+            	o.color = v.color * _Color;
             	o.color.a *= (normalized_depth);
             	return o;
             }

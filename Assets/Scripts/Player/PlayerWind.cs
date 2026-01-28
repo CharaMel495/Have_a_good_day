@@ -49,18 +49,8 @@ public class PlayerWind
         if (windDir == Vector3.zero)
             return;
 
-        Collider[] hits = Physics.OverlapSphere(controllerPos, windRange);
-
-        foreach (var hit in hits)
-        {
-            hit.gameObject.TryGetComponent<GimmickBase>(out var gimmick);
-
-            if (gimmick is not Mist mist)
-                continue;
-
-            mist.Winded();
-        }
-
+        EventDispatcher.Instance.Dispatch("ApplyWind");
+        
         CRISoundManager.Instance.PlaySE(SFX.CrowWing);
     }
 }
