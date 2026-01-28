@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 2cba62aa04581cd46b1354e9ffb4ced2, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4534,7 +4534,7 @@ GameObject:
   - component: {fileID: 889851135}
   - component: {fileID: 889851134}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PostProsessVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12803,5 +12803,5 @@ SceneRoots:
   - {fileID: 83608707}
   - {fileID: 889851135}
   - {fileID: 376050169}
-  - {fileID: 139221104}
   - {fileID: 374782893}
+  - {fileID: 139221104}

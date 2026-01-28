@@ -8,9 +8,7 @@ public enum Gimmicks
     ネコ,
     カラス,
     火球,
-    霧,
-    雷,
-    雨
+    雷
 }
 
 public class GimmickSpawner : MonoBehaviour
