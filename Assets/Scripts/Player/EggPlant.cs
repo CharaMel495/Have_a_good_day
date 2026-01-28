@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EggPlant : MonoBehaviour
 {
-    [SerializeField]
-    private float _needWarmingTime;
+    //[SerializeField]
+    //private float _needWarmingTime;
     [SerializeField]
     private float _warmDamage;
 
@@ -23,7 +23,7 @@ public class EggPlant : MonoBehaviour
     [SerializeField]
     private SunRotater _sun;
 
-    private float _warmingTime;
+    //private float _warmingTime;
 
     private float _changeA;
     private float _changeB;
@@ -33,9 +33,9 @@ public class EggPlant : MonoBehaviour
 
     public void Initialize()
     {
-        _warmingTime = 0;
-        float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
-        _slider.UpdateValue(t);
+        //_warmingTime = 0;
+        //float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
+        //_slider.UpdateValue(t);
         _changeA = 10.0f;
         _changeB = 20.0f;
 
@@ -49,44 +49,36 @@ public class EggPlant : MonoBehaviour
 
     public void Warm(bool isStand)
     {
-        _warmingTime += Time.fixedDeltaTime * (isStand ? _warmSpeed : _warmSpeed_Crouch);
+        //_warmingTime += Time.fixedDeltaTime * (isStand ? _warmSpeed : _warmSpeed_Crouch);
 
-        float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
-        _slider.UpdateValue(t);
-        //_sun.RotateSun(t);
+        //float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
+        //_slider.UpdateValue(t);
+        ////_sun.RotateSun(t);
 
-        // 徐々に音を足すテストコード
-        if (_warmingTime > _changeA && !_hasChangedA)
-        {
-            CRISoundManager.Instance.SetCurrentBGMAISAC("AisacControl_02", 1.0f);
-            _hasChangedA = true;
-        }
+        //// 徐々に音を足すテストコード
+        //if (_warmingTime > _changeA && !_hasChangedA)
+        //{
+        //    CRISoundManager.Instance.SetCurrentBGMAISAC("AisacControl_02", 1.0f);
+        //    _hasChangedA = true;
+        //}
 
-        if (_warmingTime > _changeB && !_hasChangedB)
-        {
-            CRISoundManager.Instance.SetCurrentBGMAISAC("AisacControl_00", 1.0f);
-            _hasChangedB = true;
-        }
+        //if (_warmingTime > _changeB && !_hasChangedB)
+        //{
+        //    CRISoundManager.Instance.SetCurrentBGMAISAC("AisacControl_00", 1.0f);
+        //    _hasChangedB = true;
+        //}
 
-        // ここにゲームクリアを書く
+        //// ここにゲームクリアを書く
 
-        if (_warmingTime > _needWarmingTime)
-        {
-            _scoreAsset.WasSurvived = true;
-            GameManager.ToGameOverScene();
-        }
+        //if (_warmingTime > _needWarmingTime)
+        //{
+        //    _scoreAsset.WasSurvived = true;
+        //    GameManager.ToGameOverScene();
+        //}
     }
 
     public void Damage()
     {
-        _warmingTime -= _warmDamage;
-
-        float t = Mathf.InverseLerp(0, _needWarmingTime, _warmingTime);
-        _slider.UpdateValue(t);
-
         CRISoundManager.Instance.PlaySE(SFX.EggBreak);
-
-        if (_warmingTime < 0)
-            GameManager.ToGameOverScene();
     }
 }

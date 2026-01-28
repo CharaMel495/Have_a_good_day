@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static WeatherManager;
 
 public interface IWeather
 {
     public void Open();
     public void Close();
+    public void ApplyWindow();
 }
 
 public class WeatherManager : SingletonMonoBehaviour<WeatherManager>
@@ -27,6 +29,8 @@ public class WeatherManager : SingletonMonoBehaviour<WeatherManager>
 
     private bool _isWeather = false;
 
+    private IWeather _currentWeather = null;
+
     // Start is called before the first frame update
     public void Initialize()
     {
@@ -43,6 +47,7 @@ public class WeatherManager : SingletonMonoBehaviour<WeatherManager>
         EventDispatcher.Instance.Bind(this);
 
         _isWeather = false;
+        _currentWeather = null;
     }
 
     [CallableEvent("OpenWeather")]
@@ -55,6 +60,7 @@ public class WeatherManager : SingletonMonoBehaviour<WeatherManager>
         {
             _weathers[weather].Open();
             _isWeather = true;
+            _currentWeather = _weathers[weather];
         }
     }
 
@@ -64,16 +70,15 @@ public class WeatherManager : SingletonMonoBehaviour<WeatherManager>
         if (!_isWeather)
             return;
 
-        if (data is eWeater weather)
-        {
-            _weathers[weather].Close();
-            _isWeather = false;
-        }
+        _currentWeather.Close();
+        _isWeather = false;
+        _currentWeather = null;
     }
 
     [CallableEvent("ApplyWind")]
     public void Windowed(object data)
     {
-
+        if (_currentWeather != null)
+            _currentWeather.ApplyWindow();
     }
 }

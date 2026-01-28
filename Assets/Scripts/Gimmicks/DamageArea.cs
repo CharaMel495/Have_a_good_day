@@ -67,12 +67,14 @@ public class DamageArea : MonoBehaviour
             if (gimmick is Thunder && _player.IsFlight)
                 return;
 
-            // 雨ギミックはしゃがんでいれば回避できる
-            if (gimmick is Rain && _player.CrouchChecker.IsCrouching)
-                return;
-
+            --_currentLife;
             _eggPlant.Damage();
             Destroy(gimmick.gameObject);
+
+            if (_currentLife > 0)
+                return;
+
+            GameManager.ToGameOverScene();
         }
     }
 

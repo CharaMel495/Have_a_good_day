@@ -17,11 +17,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private EggPlant _eggPlant;
 
-    [Header("体のパーツ")]
-    [SerializeField]
-    private Animator _bodyAnimator;
-    [SerializeField]
-    private Transform _bodyTransform;
+    //[Header("体のパーツ")]
+    //[SerializeField]
+    //private Animator _bodyAnimator;
+    //[SerializeField]
+    //private Transform _bodyTransform;
     [SerializeField]
     private Transform _wingTransformR;
     [SerializeField]
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
 
         _eggPlant.Warm(_crouchChecker.IsCrouching);
 
-        _bodyAnimator.SetFloat(_crouchBlendHash, Mathf.InverseLerp(_crouchChecker.crouchThreshold, _crouchChecker.standingHeight, _crouchChecker.HeadHeight));
+        //_bodyAnimator.SetFloat(_crouchBlendHash, Mathf.InverseLerp(_crouchChecker.crouchThreshold, _crouchChecker.standingHeight, _crouchChecker.HeadHeight));
         
         // カメラの forward を水平成分だけ取り出す
         Vector3 camForward = _cameraTransform.forward;

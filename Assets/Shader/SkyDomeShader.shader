@@ -19,11 +19,11 @@ Shader "Custom/SkyDome"
         _CloudScroll ("Cloud Scroll (XY)", Vector) = (0.002, 0.0, 0, 0)
 
         // ===== Glass / Crack =====
-        _GlassTex ("Glass Animation Texture", 2D) = "white" {}
-        _GlassCols ("Glass Columns", Int) = 4
-        _GlassRows ("Glass Rows", Int) = 4
-        _GlassProgress ("Glass Progress", Range(0,1)) = 0
-        _GlassIntensity ("Glass Intensity", Range(0,1)) = 1
+        // _GlassTex ("Glass Animation Texture", 2D) = "white" {}
+        // _GlassCols ("Glass Columns", Int) = 4
+        // _GlassRows ("Glass Rows", Int) = 4
+        // _GlassProgress ("Glass Progress", Range(0,1)) = 0
+        // _GlassIntensity ("Glass Intensity", Range(0,1)) = 1
     }
 
     SubShader
@@ -79,11 +79,6 @@ Shader "Custom/SkyDome"
 
             float _CloudIntensity;
             float4 _CloudScroll;
-
-            int _GlassCols;
-            int _GlassRows;
-            float _GlassProgress;
-            float _GlassIntensity;
 
             Varyings vert (Attributes v)
             {
@@ -144,23 +139,23 @@ Shader "Custom/SkyDome"
                 float3 skyBase = lerp(skyColor, cloudColor, cloudMask);
 
                 // ===== Glass Animation =====
-                int totalFrames = _GlassCols * _GlassRows;
-                float frame = floor(_GlassProgress * (totalFrames - 1));
+                // int totalFrames = _GlassCols * _GlassRows;
+                // float frame = floor(_GlassProgress * (totalFrames - 1));
 
-                float col = fmod(frame, _GlassCols);
-                float row = floor(frame / _GlassCols);
+                // float col = fmod(frame, _GlassCols);
+                // float row = floor(frame / _GlassCols);
 
-                float2 frameSize = float2(1.0 / _GlassCols, 1.0 / _GlassRows);
+                // float2 frameSize = float2(1.0 / _GlassCols, 1.0 / _GlassRows);
 
-                float2 glassUV =
-                    i.uv * frameSize +
-                    float2(col, (_GlassRows - 1 - row)) * frameSize;
+                // float2 glassUV =
+                //     i.uv * frameSize +
+                //     float2(col, (_GlassRows - 1 - row)) * frameSize;
 
-                float4 glass =
-                    SAMPLE_TEXTURE2D(_GlassTex, sampler_GlassTex, glassUV);
+                // float4 glass =
+                //     SAMPLE_TEXTURE2D(_GlassTex, sampler_GlassTex, glassUV);
 
                 float3 result =
-                    skyBase + glass.rgb * glass.a * _GlassIntensity;
+                    skyBase;
 
                 return float4(result, 1.0);
             }

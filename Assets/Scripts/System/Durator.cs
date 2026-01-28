@@ -55,6 +55,13 @@ public class Durator
             Timer += OnUnscaledTime ? Time.fixedUnscaledDeltaTime : Time.fixedDeltaTime;
         }
         /// <summary>
+        /// タイマーを任意の量だけ進める
+        /// </summary>
+        public void AddTimer(float delta)
+        {
+            Timer += delta;
+        }
+        /// <summary>
         /// 計測フラグを立てる関数
         /// </summary>
         public void StartMeasuring()
@@ -230,5 +237,32 @@ public class Durator
 
         //計測中かつ、終了してなければ実行中である
         return task.IsMeasuring && !task.IsEnded();
+    }
+
+    /// <summary>
+    /// 指定したタスクのタイマーを強制的に進める
+    /// </summary>
+    /// <param name="key">タスクID</param>
+    /// <param name="deltaTime">進めたい時間</param>
+    /// <param name="executeImmediately">
+    /// 進めた直後に処理を実行するか
+    /// </param>
+    public void ForceAdvanceTask(int key, float deltaTime, bool executeImmediately = true)
+    {
+        if (!_myTasks.ContainsKey(key))
+            return;
+
+        var task = _myTasks[key];
+
+        // タイマーを進める
+        task.AddTimer(deltaTime);
+
+        // すぐ反映したい場合
+        if (executeImmediately && task.IsMeasuring)
+            ExecutionFunction(key);
+
+        // 終了判定
+        if (task.IsEnded())
+            EndTask(key);
     }
 }

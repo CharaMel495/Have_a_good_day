@@ -14,6 +14,12 @@ public class Rain : MonoBehaviour, IWeather
 
     private Durator _durator;
 
+    [Header("羽ばたきの影響受ける度合")]
+    [SerializeField]
+    private float _windowedRatio;
+
+    private int _taskKey;
+
     public void Initialize()
     {
         _durator = new();
@@ -31,7 +37,7 @@ public class Rain : MonoBehaviour, IWeather
 
         this.gameObject.SetActive(true);
 
-        _durator.CreateTask(UpdateDebriColor, () => EventDispatcher.Instance.Dispatch("EndWeather"), _keepTime);
+        _taskKey = _durator.CreateTask(UpdateDebriColor, () => EventDispatcher.Instance.Dispatch("EndWeather"), _keepTime);
     }
 
     public void Close()
@@ -46,5 +52,10 @@ public class Rain : MonoBehaviour, IWeather
         var t = Mathf.InverseLerp(0.0f, endTime, elapsedTime);
         var col = Color.Lerp(_debriColor, Color.clear, t);
         _rainDebris.ChangeDebriColor(col);
+    }
+
+    public void ApplyWindow()
+    {
+        _durator.ForceAdvanceTask(_taskKey, _windowedRatio);
     }
 }
