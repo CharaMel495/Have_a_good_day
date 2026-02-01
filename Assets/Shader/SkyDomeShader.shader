@@ -55,12 +55,14 @@ Shader "Custom/SkyDome"
             {
                 float4 positionOS : POSITION;
                 float2 uv : TEXCOORD0;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct Varyings
             {
                 float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
+                UNITY_VERTEX_OUTPUT_STEREO
             };
 
             TEXTURE2D(_CloudTex);
@@ -82,7 +84,9 @@ Shader "Custom/SkyDome"
 
             Varyings vert (Attributes v)
             {
+                UNITY_SETUP_INSTANCE_ID(v); //’Ç‰Á
                 Varyings o;
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o); //’Ç‰Á
                 o.positionHCS = TransformObjectToHClip(v.positionOS.xyz);
                 o.uv = v.uv;
                 return o;

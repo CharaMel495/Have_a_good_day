@@ -26,12 +26,14 @@ Shader "Custom/Debris" {
 				float4 vertex : POSITION;
 				fixed4 color : COLOR;
 				float4 texcoord : TEXCOORD0;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
  			struct v2f
  			{
  				float4 pos:SV_POSITION;
  				fixed4 color:COLOR;
+                UNITY_VERTEX_OUTPUT_STEREO
  			};
  			
  			float4x4 _PrevInvMatrix;
@@ -45,6 +47,7 @@ Shader "Custom/Debris" {
    
             v2f vert(appdata_custom v)
             {
+                UNITY_SETUP_INSTANCE_ID(v); //’Ç‰Á
 				v.vertex.y += _MoveTotal;
 				float3 target = _TargetPosition;
 				float3 trip;
@@ -62,11 +65,13 @@ Shader "Custom/Debris" {
             	tv1 = mul (UNITY_MATRIX_P, tv1);
             	
             	v2f o;
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o); //’Ç‰Á
             	o.pos = tv0 + tv1;
             	float depth = o.pos.z * 0.02;
             	float normalized_depth = (1 - depth);
             	o.color = v.color * _Color;
             	o.color.a *= (normalized_depth);
+
             	return o;
             }
 

@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreAsset: {fileID: 11400000, guid: 4015647749e70944d9bc409af7b06319, type: 2}
+  _skyMat: {fileID: 2100000, guid: 3a22f4cca0861c64291fa4578a93b15c, type: 2}
   _debugCanvus: {fileID: 5648130919448738947}
   _stageTime: 180
   _rainTime: 120
@@ -427,13 +428,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83608704}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.12278779, y: -0.6963643, z: 0.12278779, w: 0.6963643}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 20}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &86833781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1670,13 +1671,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299639867}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.9316912, y: 0, z: 0, w: 0.36325133}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 137.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &299639870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6256,7 +6257,7 @@ MonoBehaviour:
   _wingTransformR: {fileID: 198463460}
   _wingTransformL: {fileID: 91253021}
   _biggestScale: {x: 0.3, y: 0.3, z: 0.3}
-  _smallestScale: {x: 0.1, y: 0.1, z: 0.1}
+  _smallestScale: {x: 0.3, y: 0.3, z: 0.3}
   _flightTime: 5
   _flightHeight: 3
 --- !u!1001 &1263246241
