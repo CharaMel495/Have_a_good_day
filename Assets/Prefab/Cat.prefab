@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deadEffect: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  _effectController: {fileID: -8668732327420159968, guid: f39af875071380945886e5f14f3a791a, type: 3}
   _effectSize: {x: 5, y: 5, z: 5}
   _moveSpeed: 4
   _gWalker: {fileID: 2256686900975392371}

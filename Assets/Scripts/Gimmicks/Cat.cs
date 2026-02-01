@@ -1,4 +1,4 @@
-using CriWare;
+﻿using CriWare;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +11,7 @@ public class Cat : GimmickBase
     [SerializeField]
     private CriAtomSource _atomSource;
 
-    private float _soundInterval = 0.4f;
+    private float _soundInterval = 2.0f;
 
     public override void Initialize(Transform target)
     {
@@ -39,7 +39,7 @@ public class Cat : GimmickBase
         if (this.gameObject == null)
             return;
 
-        CRISoundManager.Instance.PlaySE(SFX.CatWalk, _atomSource);
+        CRISoundManager.Instance.PlaySE(SFX.CatWalk);
         _timer.CreateTask(PlayWalkSound, _soundInterval);
     }
 }

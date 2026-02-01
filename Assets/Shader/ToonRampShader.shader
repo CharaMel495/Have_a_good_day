@@ -29,11 +29,13 @@ Shader "Custom/ToonRamp"
                 float3 normal : NORMAL;
                 float4 color : COLOR;
                 float2 uv_AlphaTex : TEXCOORD2;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct v2f
             {
                 float4 vertex : SV_POSITION;
+                UNITY_VERTEX_OUTPUT_STEREO
             };
 
             sampler2D _AlphaTex;
@@ -43,6 +45,8 @@ Shader "Custom/ToonRamp"
             v2f vert (appdata v)
             {
                 v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
                 float alpha = tex2Dlod(_AlphaTex, float4(v.uv_AlphaTex.xy, 0, 0)).r; // テクスチャからアルファ値を取得
                 v.vertex += float4(v.color.rgb * (_OutlineWidth * alpha.x), 0);      // ソフトエッジ法線情報を使用する
                 o.vertex = UnityObjectToClipPos(v.vertex);

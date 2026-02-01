@@ -29,12 +29,18 @@ public class GimmickSpawner : MonoBehaviour
 
     private Timer _timer;
 
+    private bool _isRain;
+    private bool _hoge;
+
     private void Start()
     {
         _timer = new();
         _timer.Initialize();
 
         _timer.CreateTask(SpawnGimmick, _spawnInterval);
+
+        _isRain = false;
+        _hoge = true;
     }
 
     private void FixedUpdate()
@@ -45,13 +51,17 @@ public class GimmickSpawner : MonoBehaviour
     public void SpawnGimmick()
     {
         // ギミックを生成
-        GimmickBase gimmick = Instantiate(_gmmickPrefabs[(int)_gimmick], this.transform.position, Quaternion.identity);
+        var gimmickPrefab = _isRain ? _gmmickPrefabs[(int)Gimmicks.雷] : _gmmickPrefabs[(int)_gimmick];
+        GimmickBase gimmick = Instantiate(gimmickPrefab, this.transform.position, Quaternion.identity);
 
         gimmick.Initialize(_player.transform);
 
         EventDispatcher.Instance.Dispatch("SpawnEnemy", gimmick);
 
         _timer.CreateTask(SpawnGimmick, _spawnInterval);
+        if (_hoge)
+            EventDispatcher.Instance.Bind(this);
+        _hoge = false;
     }
 
     public void SpawnBallFromDome()
@@ -90,5 +100,17 @@ public class GimmickSpawner : MonoBehaviour
         gimmick.Initialize(_player.transform);
 
         _timer.CreateTask(SpawnBallFromDome, _spawnInterval);
+    }
+
+    [CallableEvent("StartRain")]
+    public void StartRain(object data)
+    {
+        _isRain = true;
+    }
+
+    [CallableEvent("EndRain")]
+    public void EndRain(object data)
+    {
+        _isRain = false;
     }
 }

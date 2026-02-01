@@ -184,25 +184,25 @@ public class CRISoundManager : MonoBehaviour
     }
 
     // 明示ソース版は残す（ピンポイント再生用）
-    public void PlaySE(SFX se, CriAtomSource source)
-    {
-        if (!_isInitialized)
-            return;
+    //public void PlaySE(SFX se, CriAtomSource source)
+    //{
+    //    if (!_isInitialized)
+    //        return;
 
-        // スロットル：短時間の多重発火を抑制
-        if (_nextPlayable.TryGetValue(se, out var t) && Now < t) return;
-        _nextPlayable[se] = Now + _seThrottleInterval;
+    //    // スロットル：短時間の多重発火を抑制
+    //    if (_nextPlayable.TryGetValue(se, out var t) && Now < t) return;
+    //    _nextPlayable[se] = Now + _seThrottleInterval;
 
-        // プールから次のソースを取得
-        var src = source;
+    //    // プールから次のソースを取得
+    //    var src = GetNextSeSource();
 
-        var cueSheet = _cueSheetManager.GetCueSheet(se);
-        if (cueSheet == null) return;
+    //    var cueSheet = _cueSheetManager.GetCueSheet(se);
+    //    if (cueSheet == null) return;
 
-        src.cueSheet = cueSheet.Name;
-        src.volume = SEVolume * MasterVolume; // 念のため直前反映
-        src.Play(se.ToString());
-    }
+    //    src.cueSheet = cueSheet.Name;
+    //    src.volume = SEVolume * MasterVolume; // 念のため直前反映
+    //    src.Play(se.ToString());
+    //}
 
     private CriAtomSource GetNextSeSource()
     {

@@ -1,4 +1,4 @@
-using CriWare;
+ï»¿using CriWare;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class Crow : GimmickBase
     [SerializeField]
     private CriAtomSource _atomSource;
 
-    private float _soundInterval = 0.4f;
+    private float _soundInterval = 2.0f;
 
     public override void Initialize(Transform target)
     {
@@ -35,15 +35,15 @@ public class Crow : GimmickBase
         if (this.gameObject == null)
             return;
 
-        CRISoundManager.Instance.PlaySE(SFX.CrowWing, _atomSource);
+        CRISoundManager.Instance.PlaySE(SFX.CrowWing);
         _timer.CreateTask(PlayWingSound, _soundInterval);
     }
 
     //private void OnCollisionEnter(Collision collision)
     //{
-    //    // Å‰‚É“–‚½‚Á‚½‚à‚Ì‚Ì–@üƒxƒNƒgƒ‹•ûŒü‚É”ò‚Ô
+    //    // æœ€åˆã«å½“ãŸã£ãŸã‚‚ã®ã®æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«æ–¹å‘ã«é£›ã¶
     //    var vec = collision.contacts[0].normal.normalized;
-    //    // Rigidbody‚ÉuŠÔ“I‚È—Í‚ğ‰Á‚¦‚é
+    //    // Rigidbodyã«ç¬é–“çš„ãªåŠ›ã‚’åŠ ãˆã‚‹
     //    _rb.AddForce(vec * _moveSpeed, ForceMode.Impulse);
     //}
 }

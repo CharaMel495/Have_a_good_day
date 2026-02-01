@@ -63,13 +63,13 @@ public class DamageArea : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<GimmickBase>(out var gimmick))
         {
+            Destroy(gimmick.gameObject);
             // 雷ギミックは飛んでいたら回避できる
             if (gimmick is Thunder && _player.IsFlight)
                 return;
 
             --_currentLife;
             _eggPlant.Damage();
-            Destroy(gimmick.gameObject);
 
             if (_currentLife > 0)
                 return;

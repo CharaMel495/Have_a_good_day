@@ -261,7 +261,7 @@ MonoBehaviour:
   _skyMat: {fileID: 2100000, guid: 3a22f4cca0861c64291fa4578a93b15c, type: 2}
   _debugCanvus: {fileID: 5648130919448738947}
   _stageTime: 180
-  _rainTime: 120
+  _rainTime: 160
   _mistTime: 60
 --- !u!4 &44839764
 Transform:
@@ -2605,6 +2605,26 @@ PrefabInstance:
     - target: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97992474
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.19936797
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -23
       objectReference: {fileID: 0}
     - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: far clip plane
@@ -5151,7 +5171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adc095e331f9774e9b4145b42feafed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 1254718744}
   _eggPlant: {fileID: 2105298498}
   _maxLife: 10
   _startColor: {r: 0.09008193, g: 1, b: 0, a: 1}

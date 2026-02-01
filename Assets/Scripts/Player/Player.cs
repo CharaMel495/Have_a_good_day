@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     private float _flightHeight;
 
     public bool IsFlight { get; set; }
+    private bool _isFlightavle;
 
     private Timer _timer;
 
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         _timer = new();
 
         IsFlight = false;
+        _isFlightavle = false;
 
         EventDispatcher.Instance.Bind(this);
         EventDispatcher.Instance.Subscribe("PlayerFlight", (object data) => Flight());
@@ -113,12 +115,24 @@ public class Player : MonoBehaviour
 
     public void Flight()
     {
-        if (IsFlight)
+        if (IsFlight || !_isFlightavle)
             return;
 
         IsFlight = true;
 
-        _cameraTransform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightHeight);
-        _timer.CreateTask(() => IsFlight = false, _flightTime);
+        _cameraTransform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightTime).
+            OnComplete(() => IsFlight = false);
+    }
+
+    [CallableEvent("StartRain")]
+    public void StartRain(object data)
+    {
+        _isFlightavle = true;
+    }
+
+    [CallableEvent("EndRain")]
+    public void EndRain(object data)
+    {
+        _isFlightavle = false;
     }
 }

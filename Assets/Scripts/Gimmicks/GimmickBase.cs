@@ -8,6 +8,8 @@ public abstract class GimmickBase : MonoBehaviour
     [SerializeField]
     protected ParticleSystem _deadEffect;
     [SerializeField]
+    protected EffectController _effectController;
+    [SerializeField]
     protected Vector3 _effectSize;
     public bool IsSheded { get; set; } = false;
     protected Rigidbody _rb;
@@ -23,19 +25,17 @@ public abstract class GimmickBase : MonoBehaviour
         // Rigidbodyに瞬間的な力を加える
         _rb.AddForce(vec * 30, ForceMode.Impulse);
 
-        var effect = Instantiate(_deadEffect, this.transform.position, this.transform.rotation);
-        effect.transform.localScale = _effectSize;
-
         _timer.CreateTask(() =>
         {
+            if (_deadEffect != null)
+            {
+                var con = Instantiate(_effectController, this.transform.position, this.transform.rotation);
+                con.Play(_deadEffect, 5.0f);
+            }
+
             Destroy(this.gameObject);
-            Destroy(effect.gameObject);
+        }, 1.0f);
 
-        }, 4.0f);
-
-        if (_deadEffect != null)
-        {
-            
-        }
+        
     }
 }

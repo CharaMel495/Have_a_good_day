@@ -36,7 +36,7 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
 
         PlayerManager.Instance.Initialize();
 
-        CRISoundManager.Instance.PlayBGM(BGM.Test);
+        CRISoundManager.Instance.PlayBGM(BGM.Test2);
 
         WeatherManager.Instance.Initialize();
 
