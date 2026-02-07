@@ -390,7 +390,11 @@ ParticleSystem:
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       maxColor: {r: 1, g: 0.8902807, b: 0, a: 1}
+=======
+      maxColor: {r: 1, g: 0.93518025, b: 0, a: 1}
+>>>>>>> Stashed changes
 =======
       maxColor: {r: 1, g: 0.93518025, b: 0, a: 1}
 >>>>>>> Stashed changes
