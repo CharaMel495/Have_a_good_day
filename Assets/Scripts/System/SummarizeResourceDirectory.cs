@@ -11,7 +11,7 @@ public class SummarizeResourceDirectory
     // UsingFont
 
     // 使うフォントが決まったらここにAddressablesのパスを突っ込む
-    public const string FONT = "";
+    public const string FONT = "Assets/Font/FGUIGENBOLD SDF.asset";
 
     // ScriptableObjectDirectory
 

@@ -5927,6 +5927,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 10630212}
   m_SourcePrefab: {fileID: 100100000, guid: c6984c48aed9a154294088f4265d8478, type: 3}
+--- !u!1001 &805621151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
+      propertyPath: m_Name
+      value: Birdhouse
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d328419f9e9b96b4da25bcdf3be6be43, type: 3}
 --- !u!1 &806038887
 GameObject:
   m_ObjectHideFlags: 0
@@ -13053,8 +13110,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44e236312f4e3304bbd07c2c95d51f66, type: 2}
-  m_sharedMaterial: {fileID: -5929150637272065729, guid: 44e236312f4e3304bbd07c2c95d51f66, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13841,8 +13898,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Exit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44e236312f4e3304bbd07c2c95d51f66, type: 2}
-  m_sharedMaterial: {fileID: -5929150637272065729, guid: 44e236312f4e3304bbd07c2c95d51f66, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14636,6 +14693,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890714476}
   m_CullTransparentMesh: 1
+--- !u!1001 &1901290021
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.076644
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00036354343
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.849184
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
+      propertyPath: m_Name
+      value: BirdhouseDoorR
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b60072c13fef254ea1595e1f393df82, type: 3}
 --- !u!1 &1917638544
 GameObject:
   m_ObjectHideFlags: 0
@@ -16515,8 +16629,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u624B\u7FBD\u5148\u30D1\u30CB\u30C3\u30AF\uFF01"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 44e236312f4e3304bbd07c2c95d51f66, type: 2}
-  m_sharedMaterial: {fileID: -5929150637272065729, guid: 44e236312f4e3304bbd07c2c95d51f66, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
+  m_sharedMaterial: {fileID: -2764329237209984547, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16605,7 +16719,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5929150637272065729, guid: 44e236312f4e3304bbd07c2c95d51f66, type: 2}
+  - {fileID: -2764329237209984547, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16703,6 +16817,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111080188}
   m_CullTransparentMesh: 1
+--- !u!1001 &2111622494
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.269576
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00036497394
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.8165016
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
+      propertyPath: m_Name
+      value: BirdhouseDoorL
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd0df75709ca2bd4baf57d976478e0ae, type: 3}
 --- !u!1 &2125872356
 GameObject:
   m_ObjectHideFlags: 0
@@ -17016,3 +17187,6 @@ SceneRoots:
   - {fileID: 1181278080}
   - {fileID: 1970026043}
   - {fileID: 481859962}
+  - {fileID: 805621151}
+  - {fileID: 2111622494}
+  - {fileID: 1901290021}

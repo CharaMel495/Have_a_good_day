@@ -69,6 +69,7 @@ public class DamageArea : MonoBehaviour
                 return;
 
             --_currentLife;
+            EventDispatcher.Instance.Dispatch("OnLifeChanged", _currentLife);
             _eggPlant.Damage();
 
             if (_currentLife > 0)

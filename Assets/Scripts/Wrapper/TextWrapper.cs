@@ -27,8 +27,8 @@ public class TextWrapper : MonoBehaviour
         _text = this.GetComponent<TextMeshProUGUI>();
         // TODO:使うフォントが決まったらここのコメントを解除
         // そしたら全てのテキストに一括設定ができる
-        //var fontAssset = Addressables.LoadAssetAsync<TMP_FontAsset>(SummarizeResourceDirectory.FONT).WaitForCompletion();
-        //_text.font = fontAssset;
+        var fontAssset = Addressables.LoadAssetAsync<TMP_FontAsset>(SummarizeResourceDirectory.FONT).WaitForCompletion();
+        _text.font = fontAssset;
     }
 
 

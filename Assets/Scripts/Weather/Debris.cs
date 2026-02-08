@@ -64,7 +64,7 @@ public class Debris : MonoBehaviour
         var target_position = Camera.main.transform.TransformPoint(Vector3.forward * range_);
         var matrix = prev_view_matrix_ * Camera.main.cameraToWorldMatrix; // prev-view * inverted-cur-view
         var mr = GetComponent<Renderer>();
-        const float raindrop_speed = -1f;
+        const float raindrop_speed = -0.5f;
         mr.material.SetFloat("_Range", range_);
         mr.material.SetFloat("_RangeR", rangeR_);
         mr.material.SetFloat("_MoveTotal", move_);

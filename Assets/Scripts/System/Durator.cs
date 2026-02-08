@@ -152,6 +152,9 @@ public class Durator
     /// <param name="isCallBack">コールバックを実行するか</param>
     public void EndTask(int key, bool isCallBack = true)
     {
+        if (!_myTasks.ContainsKey(key))
+            return;
+
         //渡されたコールバックを実行
         if (isCallBack)
             _myTasks[key].CallBack?.Invoke();
