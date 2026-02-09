@@ -38,4 +38,12 @@ public abstract class GimmickBase : MonoBehaviour
 
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<GimmickBase>(out var gimmick))
+        {
+            gimmick.Shed(collision.contacts[0].normal.normalized);
+        }
+    }
 }
