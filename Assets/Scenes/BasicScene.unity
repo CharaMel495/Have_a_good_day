@@ -265,9 +265,9 @@ MonoBehaviour:
   _scoreAsset: {fileID: 11400000, guid: 4015647749e70944d9bc409af7b06319, type: 2}
   _skyMat: {fileID: 2100000, guid: 3a22f4cca0861c64291fa4578a93b15c, type: 2}
   _debugCanvus: {fileID: 5648130919448738947}
-  _stageTime: 180
-  _rainTime: 120
-  _mistTime: 60
+  _stageTime: 100
+  _rainTime: 70
+  _mistTime: 40
 --- !u!4 &44839764
 Transform:
   m_ObjectHideFlags: 0
@@ -1483,8 +1483,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B3"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
-  m_sharedMaterial: {fileID: -2764329237209984547, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b525872c9e7ab4292d92d370ccbec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keepTime: 30
+  _keepTime: 15
   _rainDebris: {fileID: 376050168}
   _debriColor: {r: 0, g: 1, b: 0.93190646, a: 1}
   _windowedRatio: 0
@@ -7652,8 +7652,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6B8B\u308A"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
-  m_sharedMaterial: {fileID: -2764329237209984547, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8774,8 +8774,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
-  m_sharedMaterial: {fileID: -2764329237209984547, guid: 493e38a2580b8024b97459ec475bb946, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12896,7 +12896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55504ac85c4c0c34592ac5ba1b5bf216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keepTime: 30
+  _keepTime: 15
   _initializeMistTime: 5
   _mat: {fileID: 2100000, guid: 23394ec114451654caebd514cd3b3fc8, type: 2}
   _maxMist: 0.85
