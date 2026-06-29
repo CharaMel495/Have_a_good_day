@@ -12,11 +12,11 @@ public class ScoreBoardDataAsset : ScriptableObject
     {
         return ranking switch
         {
-            0 => $"1st:{Scores[0]:'0000'}pts",
-            1 => $"2nd:{Scores[1]:'0000'}pts",
-            2 => $"3rd:{Scores[2]:'0000'}pts",
-            3 => $"4th:{Scores[3]:'0000'}pts",
-            4 => $"5th:{Scores[4]:'0000'}pts",
+            0 => $"1st:{Scores[0],4}pts",
+            1 => $"2nd:{Scores[1],4}pts",
+            2 => $"3rd:{Scores[2],4}pts",
+            3 => $"4th:{Scores[3],4}pts",
+            4 => $"5th:{Scores[4],4}pts",
             _ => ""
         };
     }

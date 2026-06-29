@@ -80,6 +80,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             case Scenes.Title:
                 // タイトルシーンの初期化
+                TitleManager.Instance.Initialize();
                 break;
             case Scenes.MainScene:
 
