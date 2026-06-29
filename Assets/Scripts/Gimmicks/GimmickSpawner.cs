@@ -27,10 +27,16 @@ public class GimmickSpawner : MonoBehaviour
     [SerializeField]
     private float _spawnInterval = 2f;
 
+    [SerializeField]
+    private float _highTime = 60.0f;
+    private float _currentTime;
+
     private Timer _timer;
 
     private bool _isRain;
     private bool _hoge;
+
+    private float _minSpawnTime;
 
     private void Start()
     {
@@ -41,24 +47,33 @@ public class GimmickSpawner : MonoBehaviour
 
         _isRain = false;
         _hoge = true;
+
+        _minSpawnTime = _spawnInterval * 0.5f;
     }
 
     private void FixedUpdate()
     {
         _timer.Update();
+        _currentTime += Time.fixedDeltaTime;
     }
 
     public void SpawnGimmick()
     {
         // ギミックを生成
         var gimmickPrefab = _isRain ? _gmmickPrefabs[(int)Gimmicks.雷] : _gmmickPrefabs[(int)_gimmick];
-        GimmickBase gimmick = Instantiate(gimmickPrefab, this.transform.position, Quaternion.identity);
+        var pos = this.transform.position;
+        var rand = Random.Range(-2.0f, 2.0f);
+        pos += rand * this.transform.right;
+        GimmickBase gimmick = Instantiate(gimmickPrefab, pos, Quaternion.identity);
 
         gimmick.Initialize(_player.transform);
 
         EventDispatcher.Instance.Dispatch("SpawnEnemy", gimmick);
 
-        _timer.CreateTask(SpawnGimmick, _spawnInterval);
+        var t = Mathf.InverseLerp(0, _highTime, _currentTime);
+        var interval = Mathf.Lerp(_spawnInterval, _minSpawnTime, t);
+
+        _timer.CreateTask(SpawnGimmick, interval);
         if (_hoge)
             EventDispatcher.Instance.Bind(this);
         _hoge = false;

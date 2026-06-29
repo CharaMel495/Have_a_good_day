@@ -6,6 +6,8 @@ using UnityEngine;
 public abstract class GimmickBase : MonoBehaviour
 {
     [SerializeField]
+    protected Explode _explode;
+    [SerializeField]
     protected ParticleSystem _deadEffect;
     [SerializeField]
     protected EffectController _effectController;
@@ -29,8 +31,9 @@ public abstract class GimmickBase : MonoBehaviour
         {
             if (_deadEffect != null)
             {
+                //var con = Instantiate(_deadEffect, this.transform.position, this.transform.rotation);
                 var con = Instantiate(_effectController, this.transform.position, this.transform.rotation);
-                con.Play(_deadEffect, 5.0f);
+                con.Play(_deadEffect, _explode, 1.0f);
             }
 
             Destroy(this.gameObject);

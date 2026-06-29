@@ -122,6 +122,7 @@ public class Player : MonoBehaviour
 
         _cameraTransform.DOJump(this.transform.position, _flightHeight, numJumps: 1, _flightTime).
             OnComplete(() => IsFlight = false);
+        _eggPlant.transform.DOJump(_eggPlant.transform.position, _flightHeight, numJumps: 1, _flightTime);
     }
 
     [CallableEvent("StartRain")]

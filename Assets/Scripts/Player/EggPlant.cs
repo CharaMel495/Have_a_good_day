@@ -77,5 +77,6 @@ public class EggPlant : MonoBehaviour
     public void Damage()
     {
         CRISoundManager.Instance.PlaySE(SFX.EggBreak);
+        EventDispatcher.Instance.Dispatch("StartValcan");
     }
 }
