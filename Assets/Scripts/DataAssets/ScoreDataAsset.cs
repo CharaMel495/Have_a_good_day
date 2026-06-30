@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,4 +7,7 @@ public class ScoreDataAsset : ScriptableObject
 {
     public float SuviveTime;
     public bool WasSurvived;
+    public int EggValue;
+    public int ComboCount;
+    public int WingFrappCount;
 }
