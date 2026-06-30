@@ -109,7 +109,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FogAlpha: 0.65866697
+    - _FogAlpha: 0
     - _FogEnd: 5
     - _FogStart: 0
     - _GlossMapScale: 0
