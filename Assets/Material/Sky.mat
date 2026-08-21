@@ -176,7 +176,7 @@ Material:
     - _ReceiveShadows: 1
     - _Rotation: 0
     - _SkyGradient: 1
-    - _SkyTime: 0.3055487
+    - _SkyTime: 0.1673719
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
