@@ -28,7 +28,7 @@ public class Mist : MonoBehaviour, IWeather
     {
         _durator = new();
 
-        _mat.SetFloat("_FogAlpha", 0.0f);
+        _mat.SetFloat("_FogDensity", 0.0f);
 
         this.gameObject.SetActive(false);
     }
@@ -53,13 +53,13 @@ public class Mist : MonoBehaviour, IWeather
     public void InMist(float elapsedTime, float endTime)
     {
         var t = Mathf.InverseLerp(0.0f, endTime, elapsedTime);
-        _mat.SetFloat("_FogAlpha", Mathf.Lerp(0.0f, _maxMist, t));
+        _mat.SetFloat("_FogDensity", Mathf.Lerp(0.0f, _maxMist, t));
     }
 
     public void OutMist(float elapsedTime, float endTime)
     {
         var t = Mathf.InverseLerp(0.0f, endTime, elapsedTime);
-        _mat.SetFloat("_FogAlpha", Mathf.Lerp(_maxMist, 0.0f, t));
+        _mat.SetFloat("_FogDensity", Mathf.Lerp(_maxMist, 0.0f, t));
     }
 
     public void ApplyWindow()

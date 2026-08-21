@@ -25,6 +25,9 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
     [SerializeField]
     private float _mistTime;
 
+    [SerializeField]
+    private SunRotater _rotator;
+
     private float _remainTime;
 
     private bool _isRained;
@@ -53,6 +56,8 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
 
         var t = Mathf.InverseLerp(_stageTime, 0.0f, _remainTime);
         _skyMat.SetFloat("_SkyTime", t);
+
+        _rotator.RotateSun(t);
 
         if (!_isRained && _remainTime < _rainTime)
         {
