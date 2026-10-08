@@ -26,6 +26,9 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
     private float _mistTime;
 
     [SerializeField]
+    private GameObject _resultCanvas;
+
+    [SerializeField]
     private SunRotater _rotator;
 
     private float _remainTime;
@@ -42,6 +45,8 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
         CRISoundManager.Instance.PlayBGM(BGM.Test2);
 
         WeatherManager.Instance.Initialize();
+
+        ScoreManager.Instance.Initialize();
 
         _remainTime = _stageTime;
         _isRained = false;
@@ -75,7 +80,14 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
             return;
 
         _scoreAsset.WasSurvived = true;
-        GameManager.ToGameOverScene();
+        SwitchREsultMode();
+        //GameManager.ToGameOverScene();
+    }
+
+    public void SwitchREsultMode()
+    {
+        EventDispatcher.Instance.Dispatch("OnViewScore");
+        _resultCanvas.SetActive(true);
     }
 
     public void SwitchDebugCanvusActive()
