@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 18d42482421f500498329e4906742b39
-  m_SerializeEntries:
-  - m_GUID: 493e38a2580b8024b97459ec475bb946
-    m_Address: Assets/Font/FGUIGENBOLD SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 44186809553398247957832088696cdd, type: 2}
   m_SchemaSet:

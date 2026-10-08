@@ -35,6 +35,8 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         _scoreData.ComboCount = 0;
         _scoreData.EggValue = 10;
         _scoreData.WingFrappCount = 0;
+
+        EventDispatcher.Instance.Bind(this);
     }
 
     private void FixedUpdate()

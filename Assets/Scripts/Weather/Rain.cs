@@ -7,8 +7,10 @@ public class Rain : MonoBehaviour, IWeather
     [SerializeField]
     private float _keepTime;
 
+    //[SerializeField]
+    //private Debris _rainDebris;
     [SerializeField]
-    private Debris _rainDebris;
+    private ParticleSystem _rainParticle;
     [SerializeField]
     private Color _debriColor;
 
@@ -24,6 +26,7 @@ public class Rain : MonoBehaviour, IWeather
     {
         _durator = new();
         this.gameObject.SetActive(false);
+        _rainParticle.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -33,9 +36,13 @@ public class Rain : MonoBehaviour, IWeather
 
     public void Open()
     {
-        _rainDebris.ChangeDebriColor(_debriColor);
+        //_rainDebris.ChangeDebriColor(_debriColor);
+        
+        //this.gameObject.SetActive(true);
+        _rainParticle.gameObject.SetActive(true);
 
-        this.gameObject.SetActive(true);
+        var em = _rainParticle.emission;
+        em.rateOverTime = 1000;
 
         EventDispatcher.Instance.Dispatch("StartRain");
         _taskKey = _durator.CreateTask(UpdateDebriColor, () => EventDispatcher.Instance.Dispatch("EndWeather"), _keepTime);
@@ -43,17 +50,19 @@ public class Rain : MonoBehaviour, IWeather
 
     public void Close()
     {
-        _rainDebris.ChangeDebriColor(Color.clear);
+        //_rainDebris.ChangeDebriColor(Color.clear);
 
         EventDispatcher.Instance.Dispatch("EndRain");
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        _rainParticle.gameObject.SetActive(false);
     }
 
     public void UpdateDebriColor(float elapsedTime, float endTime)
     {
         var t = Mathf.InverseLerp(0.0f, endTime, elapsedTime);
-        var col = Color.Lerp(_debriColor, Color.clear, t);
-        _rainDebris.ChangeDebriColor(col);
+        var col = Mathf.Lerp(0, 1000, t);
+        var em = _rainParticle.emission;
+        em.rateOverTime = col;
     }
 
     public void ApplyWindow()
