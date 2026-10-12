@@ -17,11 +17,25 @@ public class Thunder : GimmickBase
         _gWalker.Target = target;
         _gWalker.MoveSpeed = _moveSpeed;
 
-        EventDispatcher.Instance.Subscribe("OnEndRain",
-            (_) => Destroy(this.gameObject));
+        EventDispatcher.Instance.Subscribe("EndRain",
+            (_) =>
+            {
+                if (this == null)
+                    return;
+
+                if (this.gameObject != null)
+                    Destroy(this.gameObject);
+            });
 
         EventDispatcher.Instance.Subscribe("OnEnterResultMode",
-            (_) => Destroy(this.gameObject));
+            (_) =>
+            {
+                if (this == null)
+                    return;
+
+                if (this.gameObject != null)
+                    Destroy(this.gameObject);
+            });
     }
 
     private void FixedUpdate()
@@ -31,7 +45,6 @@ public class Thunder : GimmickBase
         if (!IsSheded)
             _gWalker.Walk();
     }
-
 
     public override void Shed(Vector3 impactNormal)
     {

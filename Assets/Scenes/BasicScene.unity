@@ -2366,6 +2366,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e2264a1cc9063a8419f347c278c51d2f, type: 3}
   m_PrefabInstance: {fileID: 1609618756}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &337058513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4861489027357502603, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861489027357502603, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915790247996229101, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779208415245304589, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+      propertyPath: m_Name
+      value: RainParticle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+--- !u!198 &337058514 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4861489027357502603, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+  m_PrefabInstance: {fileID: 337058513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &338044394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2762,7 +2836,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376050167}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f60aed3ebd0d2e45bf515ffc29984c9, type: 3}
   m_Name: 
@@ -2845,7 +2919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keepTime: 15
-  _rainParticle: {fileID: 4861489027357502603, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
+  _rainParticle: {fileID: 337058514}
   _debriColor: {r: 0, g: 1, b: 0.93190646, a: 1}
   _windowedRatio: 0
 --- !u!1001 &383779942
@@ -18998,3 +19072,4 @@ SceneRoots:
   - {fileID: 1508185973}
   - {fileID: 398865808}
   - {fileID: 1842971167}
+  - {fileID: 337058513}

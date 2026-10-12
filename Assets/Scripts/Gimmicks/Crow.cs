@@ -25,7 +25,14 @@ public class Crow : GimmickBase
         _timer.CreateTask(PlayWingSound, _soundInterval);
 
         EventDispatcher.Instance.Subscribe("OnEnterResultMode",
-            (_) => Destroy(this.gameObject));
+            (_) =>
+            {
+                if (this == null)
+                    return;
+
+                if (this.gameObject != null)
+                    Destroy(this.gameObject);
+            });
     }
 
     private void FixedUpdate()

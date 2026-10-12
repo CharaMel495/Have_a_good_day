@@ -25,7 +25,7 @@ public class Rain : MonoBehaviour, IWeather
     public void Initialize()
     {
         _durator = new();
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
         _rainParticle.gameObject.SetActive(false);
     }
 
@@ -41,8 +41,8 @@ public class Rain : MonoBehaviour, IWeather
         //this.gameObject.SetActive(true);
         _rainParticle.gameObject.SetActive(true);
 
-        var em = _rainParticle.emission;
-        em.rateOverTime = 1000;
+        //var em = _rainParticle.emission;
+        //em.rateOverTime = 1000;
 
         EventDispatcher.Instance.Dispatch("StartRain");
         _taskKey = _durator.CreateTask(UpdateDebriColor, () => EventDispatcher.Instance.Dispatch("EndWeather"), _keepTime);
@@ -67,6 +67,6 @@ public class Rain : MonoBehaviour, IWeather
 
     public void ApplyWindow()
     {
-        _durator.ForceAdvanceTask(_taskKey, _windowedRatio);
+        //_durator.ForceAdvanceTask(_taskKey, _windowedRatio);
     }
 }

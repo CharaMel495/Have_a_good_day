@@ -87,6 +87,7 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
     public void SwitchREsultMode()
     {
         EventDispatcher.Instance.Dispatch("OnViewScore");
+        EventDispatcher.Instance.Dispatch("OnEnterResultMode");
         _resultCanvas.SetActive(true);
         CRISoundManager.Instance.PlayBGM(BGM.BGM_ResultsDisplay);
     }

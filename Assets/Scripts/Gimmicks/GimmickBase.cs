@@ -36,11 +36,15 @@ public abstract class GimmickBase : MonoBehaviour
                 con.Play(_deadEffect, _explode, 1.0f);
             }
 
-            EventDispatcher.Instance.Subscribe("EndRain",
-            (_) => Destroy(this.gameObject));
+            //EventDispatcher.Instance.Subscribe("EndRain",
+            //(_) =>
+            //{
+            //    if (this.gameObject != null)
+            //        Destroy(this.gameObject);
+            //});
 
-            EventDispatcher.Instance.Unsubscribe("OnEnterResultMode",
-            (_) => Destroy(this.gameObject));
+            //EventDispatcher.Instance.Unsubscribe("OnEnterResultMode",
+            //(_) => Destroy(this.gameObject));
 
             Destroy(this.gameObject);
         }, 1.0f);

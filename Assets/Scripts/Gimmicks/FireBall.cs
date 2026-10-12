@@ -10,7 +10,14 @@ public class FireBall : GimmickBase
         _rb.velocity = vec.normalized * _moveSpeed;
 
         EventDispatcher.Instance.Subscribe("OnEnterResultMode",
-            (_) => Destroy(this.gameObject));
+            (_) =>
+            {
+                if (this == null)
+                    return;
+
+                if (this.gameObject != null)
+                    Destroy(this.gameObject);
+            });
     }
 
     private void FixedUpdate()
