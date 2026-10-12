@@ -44,6 +44,9 @@ public class PlayerWing : MonoBehaviour
     {
         _timer.Update();
 
+        if (_flapChecker.CheckFlap(out Vector3 _))
+            EventDispatcher.Instance.Dispatch("OnWingFlapped");
+
         if (_isFlapable && _flapChecker.CheckFlap(out Vector3 vel))
         {
             if (GetFlapDirection(vel, _playerTransform.forward) == FlapDirection.Vertical)

@@ -69,13 +69,14 @@ public class DamageArea : MonoBehaviour
                 return;
 
             --_currentLife;
+            _scoreAsset.EggValue = _currentLife;
             EventDispatcher.Instance.Dispatch("OnLifeChanged", _currentLife);
             _eggPlant.Damage();
 
             if (_currentLife > 0)
                 return;
 
-            GameManager.ToGameOverScene();
+            EventDispatcher.Instance.Dispatch("ToResult");
         }
     }
 

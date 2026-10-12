@@ -36,6 +36,8 @@ public abstract class GimmickBase : MonoBehaviour
                 con.Play(_deadEffect, _explode, 1.0f);
             }
 
+            EventDispatcher.Instance.Dispatch("OnGimmickEliminated");
+
             //EventDispatcher.Instance.Subscribe("EndRain",
             //(_) =>
             //{

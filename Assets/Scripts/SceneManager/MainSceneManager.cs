@@ -39,6 +39,7 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
     public override void Initialize()
     {
         InputSystemManager.BindAction("OpenUI", SwitchDebugCanvusActive);
+        EventDispatcher.Instance.Subscribe("ToResult", (_) => SwitchResultMode());
 
         PlayerManager.Instance.Initialize();
 
@@ -80,11 +81,11 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
             return;
 
         _scoreAsset.WasSurvived = true;
-        SwitchREsultMode();
+        SwitchResultMode();
         //GameManager.ToGameOverScene();
     }
 
-    public void SwitchREsultMode()
+    public void SwitchResultMode()
     {
         EventDispatcher.Instance.Dispatch("OnViewScore");
         EventDispatcher.Instance.Dispatch("OnEnterResultMode");

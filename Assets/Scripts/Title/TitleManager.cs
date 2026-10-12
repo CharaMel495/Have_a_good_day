@@ -13,23 +13,47 @@ public class TitleManager : SingletonMonoBehaviour<TitleManager>
     [SerializeField]
     private Mist _mist;
 
+    private bool _isStarted;
+
+    private Timer _timer;
+
     public void Initialize()
     {
+        _isStarted = false;
+
         _mist.Initialize();
         InputSystemManager.BindAction("DebugJump", StartGame);
         CRISoundManager.Instance.PlayBGM(BGM.Title_BGM);
+
+        EventDispatcher.Instance.Subscribe("StartGame", (_) => StartGame());
+        //EventDispatcher.Instance.Subscribe("OnWingFlapped", (_) => StartGame());
+
+        _timer = new();
+        _timer.Initialize();
+    }
+
+    private void FixedUpdate()
+    {
+        _timer.Update();
     }
 
     public void StartGame()
     {
-        var rbR = _doorR.AddComponent<Rigidbody>();
-        var rbL = _doorL.AddComponent<Rigidbody>();
+        if (_isStarted)
+            return;
 
-        rbR.AddForce(Vector3.forward * _pow, ForceMode.Impulse);
-        rbL.AddForce(Vector3.forward * _pow, ForceMode.Impulse);
+        _isStarted = true;
+
+        //var rbR = _doorR.AddComponent<Rigidbody>();
+        //var rbL = _doorL.AddComponent<Rigidbody>();
+
+        //rbR.AddForce(Vector3.forward * _pow, ForceMode.Impulse);
+        //rbL.AddForce(Vector3.forward * _pow, ForceMode.Impulse);
 
         CRISoundManager.Instance.PlaySE(SFX.OpenTheDoor);
 
         _mist.Open();
+
+        _timer.CreateTask(() => GameManager.ToMainScene(), 5.0f);
     }
 }

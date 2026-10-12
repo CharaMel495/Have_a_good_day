@@ -29,7 +29,14 @@ public class Bamboo : GimmickBase
         _timer.CreateTask(() => Initialize(null), _INITIALIZEDELAY);
 
         EventDispatcher.Instance.Subscribe("OnEnterResultMode",
-            (_) => Destroy(this.gameObject));
+             (_) =>
+             {
+                 if (this == null)
+                     return;
+
+                 if (this.gameObject != null)
+                     Destroy(this.gameObject);
+             });
     }
 
     // Update is called once per frame
@@ -58,7 +65,7 @@ public class Bamboo : GimmickBase
 
     private void StartGrowth()
     {
-        _bambooShort.DOMoveY(-_appearHeight, _growTime);
+        _bambooShort.DOMoveY(-_appearHeight * 5, _growTime);
         _bamboo.DOMoveY(_pumpUpHeight, _growTime).SetEase(Ease.OutCubic).OnComplete(UnLock);
     }
 

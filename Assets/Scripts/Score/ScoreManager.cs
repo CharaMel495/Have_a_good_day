@@ -63,12 +63,14 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
         if (_currentCombo > _maxCombo)
             _maxCombo = _currentCombo;
+
+        _scoreData.ComboCount = _maxCombo;
     }
 
     [CallableEvent("OnWingFlapped")]
     public void OnWingFlapped(object _)
     {
-        ++_scoreData.WingFrappCount;
+        _scoreData.WingFrappCount += 1;
     }
 
     [CallableEvent("OnViewScore")]
