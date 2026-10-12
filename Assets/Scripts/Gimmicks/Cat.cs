@@ -24,6 +24,9 @@ public class Cat : GimmickBase
 
         _gWalker.Target = target;
         _gWalker.MoveSpeed = _moveSpeed;
+
+        EventDispatcher.Instance.Subscribe("OnEnterResultMode", 
+            (_) => Destroy(this.gameObject));
     }
 
     private void FixedUpdate()

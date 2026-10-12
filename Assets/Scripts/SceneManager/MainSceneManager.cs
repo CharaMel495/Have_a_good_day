@@ -42,7 +42,7 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
 
         PlayerManager.Instance.Initialize();
 
-        CRISoundManager.Instance.PlayBGM(BGM.Test2);
+        CRISoundManager.Instance.PlayBGM(BGM.MainGame);
 
         WeatherManager.Instance.Initialize();
 
@@ -88,6 +88,7 @@ public class MainSceneManager : SceneManagerBase<MainSceneManager>
     {
         EventDispatcher.Instance.Dispatch("OnViewScore");
         _resultCanvas.SetActive(true);
+        CRISoundManager.Instance.PlayBGM(BGM.BGM_ResultsDisplay);
     }
 
     public void SwitchDebugCanvusActive()

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,9 @@ public class FireBall : GimmickBase
     {
         var vec = target.position - this.transform.position;
         _rb.velocity = vec.normalized * _moveSpeed;
+
+        EventDispatcher.Instance.Subscribe("OnEnterResultMode",
+            (_) => Destroy(this.gameObject));
     }
 
     private void FixedUpdate()
@@ -17,9 +20,9 @@ public class FireBall : GimmickBase
 
     //private void OnCollisionEnter(Collision collision)
     //{
-    //    // Å‰‚É“–‚½‚Á‚½‚à‚Ì‚Ì–@üƒxƒNƒgƒ‹•ûŒü‚É”ò‚Ô
+    //    // æœ€åˆã«å½“ãŸã£ãŸã‚‚ã®ã®æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«æ–¹å‘ã«é£›ã¶
     //    var vec = collision.contacts[0].normal.normalized;
-    //    // Rigidbody‚ÉuŠÔ“I‚È—Í‚ğ‰Á‚¦‚é
+    //    // Rigidbodyã«ç¬é–“çš„ãªåŠ›ã‚’åŠ ãˆã‚‹
     //    _rb.AddForce(vec * _moveSpeed, ForceMode.Impulse);
     //}
 }

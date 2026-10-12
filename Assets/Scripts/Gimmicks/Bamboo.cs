@@ -27,6 +27,9 @@ public class Bamboo : GimmickBase
     {
         _timer = new();
         _timer.CreateTask(() => Initialize(null), _INITIALIZEDELAY);
+
+        EventDispatcher.Instance.Subscribe("OnEnterResultMode",
+            (_) => Destroy(this.gameObject));
     }
 
     // Update is called once per frame

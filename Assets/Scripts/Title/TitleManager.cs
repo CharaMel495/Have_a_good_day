@@ -17,6 +17,7 @@ public class TitleManager : SingletonMonoBehaviour<TitleManager>
     {
         _mist.Initialize();
         InputSystemManager.BindAction("DebugJump", StartGame);
+        CRISoundManager.Instance.PlayBGM(BGM.Title_BGM);
     }
 
     public void StartGame()
@@ -26,6 +27,8 @@ public class TitleManager : SingletonMonoBehaviour<TitleManager>
 
         rbR.AddForce(Vector3.forward * _pow, ForceMode.Impulse);
         rbL.AddForce(Vector3.forward * _pow, ForceMode.Impulse);
+
+        CRISoundManager.Instance.PlaySE(SFX.OpenTheDoor);
 
         _mist.Open();
     }

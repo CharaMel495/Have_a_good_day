@@ -23,6 +23,9 @@ public class Crow : GimmickBase
         transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
 
         _timer.CreateTask(PlayWingSound, _soundInterval);
+
+        EventDispatcher.Instance.Subscribe("OnEnterResultMode",
+            (_) => Destroy(this.gameObject));
     }
 
     private void FixedUpdate()

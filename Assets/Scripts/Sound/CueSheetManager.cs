@@ -11,6 +11,10 @@ public enum BGM
     // BGMのキーをここに追加する
     Test,
     Test2,
+    AngryMode,
+    MainGame,
+    BGM_ResultsDisplay,
+    Title_BGM,
     None,
 }
 
@@ -22,7 +26,10 @@ public enum SFX
     SnakeWalk,
     EggBreak,
     Thunder,
-    rain
+    rain,
+    SE_ResultsDisplay,
+    OpenTheDoor,
+    GunEquipped
 }
 
 

@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keepTime: 15
-  _rainDebris: {fileID: 376050168}
+  _rainParticle: {fileID: 4861489027357502603, guid: a84b1228bb676b544a83f7110c7b7a79, type: 3}
   _debriColor: {r: 0, g: 1, b: 0.93190646, a: 1}
   _windowedRatio: 0
 --- !u!1001 &383779942

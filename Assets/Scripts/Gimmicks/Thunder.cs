@@ -16,6 +16,12 @@ public class Thunder : GimmickBase
 
         _gWalker.Target = target;
         _gWalker.MoveSpeed = _moveSpeed;
+
+        EventDispatcher.Instance.Subscribe("OnEndRain",
+            (_) => Destroy(this.gameObject));
+
+        EventDispatcher.Instance.Subscribe("OnEnterResultMode",
+            (_) => Destroy(this.gameObject));
     }
 
     private void FixedUpdate()
